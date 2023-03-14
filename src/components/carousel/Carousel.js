@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.css';
+import carouselImage1 from '../../assets/carousel/Luxurious.png';
+import carouselImage2 from '../../assets/carousel/Sans titre.png';
+import carouselImage3 from '../../assets/carousel/Sans titre (1).png';
 
 const CARDS_DATA = [
     {
         id: 1,
         title: 'Card Title 1',
         description: 'Card Description 1',
-        imageUrl: 'https://picsum.photos/id/1/600/300',
+        imageUrl: carouselImage1,
     },
     {
         id: 2,
         title: 'Card Title 2',
         description: 'Card Description 2',
-        imageUrl: 'https://picsum.photos/id/2/600/300',
+        imageUrl: carouselImage2,
     },
     {
         id: 3,
         title: 'Card Title 3',
         description: 'Card Description 3',
-        imageUrl: 'https://picsum.photos/id/3/600/300',
+        imageUrl: carouselImage3
     },
 ];
 

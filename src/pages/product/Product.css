@@ -1,0 +1,28 @@
+.select-products-container select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+}
+
+.select-products-container option {
+    background-color: #fff;
+    color: #333;
+}
+
+.select-products-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.product-card-container {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.product-card-container.exiting {
+    opacity: 0;
+}
