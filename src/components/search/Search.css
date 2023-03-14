@@ -1,0 +1,32 @@
+/* Search bar */
+.search {
+    display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+/* Search input */
+.search input[type="text"] {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    margin-right: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Search button */
+.search button[type="submit"] {
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Hover effect on button */
+.search button[type="submit"]:hover {
+    color: #888;
+}

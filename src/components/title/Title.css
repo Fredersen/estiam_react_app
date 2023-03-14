@@ -1,0 +1,13 @@
+.title {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.title h2 {
+    font-size: 28px;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 30px 20px;
+}
