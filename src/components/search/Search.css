@@ -18,7 +18,7 @@
 }
 
 /* Search button */
-.search button[type="submit"] {
+.search a {
     border: none;
     background-color: transparent;
     font-size: 20px;
@@ -27,6 +27,6 @@
 }
 
 /* Hover effect on button */
-.search button[type="submit"]:hover {
+.search a:hover {
     color: #888;
 }

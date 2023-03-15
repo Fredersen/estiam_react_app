@@ -1,11 +1,14 @@
 import './Navbar.css';
 import Search from "../search/Search";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { CiSettings } from "react-icons/ci";
 import { IoLogoFoursquare } from "react-icons/io";
 import Category from "../category/Category";
+import { Link } from "react-router-dom";
+import {CgProfile} from "react-icons/cg";
+import {useContext} from "react";
+import CartContext from "../../contexts/CartContext";
 
-export default function Navbar() {
+export default function Navbar({ handleSearch }) {
     const CATEGORY_DATA = [
         {
             id: 1,
@@ -29,20 +32,33 @@ export default function Navbar() {
         },
     ];
 
+    const { cart } = useContext(CartContext);
+
+    const cartCount = Object.values(cart).reduce((total, item) => {
+        return total + item.quantity;
+    }, 0);
+
     return (
         <>
             <nav className="navbar">
                 <div className="nav-left">
-                    <IoLogoFoursquare />
+                    <Link to={'/'}>
+                        <IoLogoFoursquare />
+                    </Link>
                 </div>
                 <div className="nav-center">
                     <div className="nav-links">
-                        <Search />
+                        <Search handleSearch={handleSearch} />
                     </div>
                 </div>
                 <div className="right-logo">
                     <AiOutlineShoppingCart />
-                    <CiSettings />
+                    {cartCount > 0 && (
+                        <div className="cart-count">{cartCount}</div>
+                    )}
+                    <Link to={'/se-connecter'}>
+                        <CgProfile />
+                    </Link>
                 </div>
             </nav>
             <div className="nav-category">

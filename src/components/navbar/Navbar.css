@@ -9,7 +9,7 @@
 }
 
 /* Left logo */
-.nav-left {
+.nav-left, .nav-left a {
     display: flex;
     align-items: center;
     color: #333;
@@ -29,7 +29,8 @@
 }
 
 /* Right logos */
-.right-logo {
+.right-logo, .right-logo a {
+    position: relative;
     display: flex;
     align-items: center;
     color: #333;
@@ -58,22 +59,6 @@
 
 @import url('../../style.css');
 
-.category {
-    margin: 0;
-    padding: 0 15px;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 60px;
-    text-align: center;
-    text-decoration: none;
-    color: #fff;
-    transition: all 0.3s ease;
-}
-
-.category:hover {
-    background-color: rgba(51, 51, 51, 0.5);
-    color: #333;
-}
 
 .nav-category {
     background-color: rgba(51, 51, 51, 0.3);
@@ -92,4 +77,19 @@
     flex-grow: 1;
     margin: 0;
     padding: 0;
+}
+
+.cart-count {
+    position: absolute;
+    top: -13px;
+    right: 26px;
+    background-color: #FF4136;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

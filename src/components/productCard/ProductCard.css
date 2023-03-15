@@ -10,6 +10,10 @@
     max-width: 300px;
 }
 
+.product-card a {
+    text-decoration: none;
+}
+
 .product-card-image {
     height: 250px;
     display: flex;

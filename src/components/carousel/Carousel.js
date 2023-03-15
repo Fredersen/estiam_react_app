@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.css';
-import carouselImage1 from '../../assets/carousel/Luxurious.png';
-import carouselImage2 from '../../assets/carousel/Sans titre.png';
-import carouselImage3 from '../../assets/carousel/Sans titre (1).png';
+import carouselImage1 from '../../assets/carousel/Luxurious.webp';
+import carouselImage2 from '../../assets/carousel/Sans-titre.webp';
+import carouselImage3 from '../../assets/carousel/Sans-titre-_1_.webp';
 
 const CARDS_DATA = [
     {
