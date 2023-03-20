@@ -1,9 +1,9 @@
 import './Navbar.css';
 import Search from "../search/Search";
-import { AiOutlineShoppingCart } from "react-icons/ai";
-import { IoLogoFoursquare } from "react-icons/io";
+import {AiOutlineShoppingCart} from "react-icons/ai";
+import {IoLogoFoursquare} from "react-icons/io";
 import Category from "../category/Category";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import {CgProfile} from "react-icons/cg";
 import {useContext} from "react";
 import CartContext from "../../contexts/CartContext";
@@ -52,10 +52,12 @@ export default function Navbar({ handleSearch }) {
                     </div>
                 </div>
                 <div className="right-logo">
-                    <AiOutlineShoppingCart />
-                    {cartCount > 0 && (
-                        <div className="cart-count">{cartCount}</div>
-                    )}
+                    <Link to={'/panier'}>
+                        <AiOutlineShoppingCart />
+                        {cartCount > 0 && (
+                            <div className="cart-count">{cartCount}</div>
+                        )}
+                    </Link>
                     <Link to={'/se-connecter'}>
                         <CgProfile />
                     </Link>

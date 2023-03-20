@@ -17,7 +17,3 @@
     display: flex;
     justify-content: flex-end;
 }
-
-.product-card-container p {
-    min-height: 20vh;
-}

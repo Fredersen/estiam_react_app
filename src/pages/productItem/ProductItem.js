@@ -23,7 +23,7 @@ export default function ProductItem() {
 
     function handleAddToCart() {
         product.quantity = quantity;
-       addItemToCart(product);
+        addItemToCart(product);
     }
     function handleQuantityChange(event) {
         setQuantity(Number(event.target.value));

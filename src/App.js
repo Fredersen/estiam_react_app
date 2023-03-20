@@ -8,6 +8,8 @@ import ProductItem from "./pages/productItem/ProductItem";
 import Login from "./pages/login/Login";
 import {useState} from "react";
 import {CartContextProvider} from "./contexts/CartContext";
+import Cart from "./pages/cart/Cart";
+import Delivery from "./pages/delivery/Delivery"
 
 function App() {
     const products = [
@@ -41,6 +43,8 @@ function App() {
                         <Route path='/:slug' element={<Product products={filteredProduct} />} />
                         <Route path='/produits/:id' element={<ProductItem />} />
                         <Route path='/se-connecter' element={<Login />} />
+                        <Route path='/panier' element={<Cart />} />
+                        <Route path = '/livraison' element={<Delivery />} />
                     </Routes>
                     <Outlet/>
                     <Footer />

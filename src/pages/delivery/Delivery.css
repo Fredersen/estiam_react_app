@@ -1,0 +1,124 @@
+.delivery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.delivery-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.delivery-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+    cursor: pointer;
+}
+
+.delivery-card input[type="radio"] {
+    display: none;
+}
+
+.delivery-card-title,
+.delivery-card-description,
+.delivery-card-price {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.delivery-card-price {
+    font-weight: bold;
+}
+
+.delivery-address {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+}
+
+.delivery-address-input,
+.delivery-address-input-split {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.delivery-address-input label,
+.delivery-address-input input,
+.delivery-address-input select {
+    display: block;
+    width: 100%;
+}
+
+.delivery-address-input-split .delivery-address-input {
+    width: 48%;
+}
+
+input[type="text"],
+input[type="email"] {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.delivery-button {
+    background-color: #4caf50;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+}
+
+button.btn.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.validation-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem; /* Ajustez la taille de l'icône ici */
+    color: #4caf50;
+    display: none;
+}
+
+.delivery-card input[type="radio"]:checked + label .validation-icon {
+    display: inline;
+}
+
+.error-message {
+    color: red;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+.delivery-address-input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.error-message-container {
+    display: flex;
+    justify-content: space-between;
+}
