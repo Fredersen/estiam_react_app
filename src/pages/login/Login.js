@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 
-export default function Login() {
+export default function Login({setShowRegister}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
@@ -33,6 +33,10 @@ export default function Login() {
         setLoading(false);
     };
 
+    const handleRegister = () => {
+        setShowRegister(true);
+    }
+
     return (
         <div className="login">
             <div className="login-container">
@@ -55,6 +59,10 @@ export default function Login() {
                     </button>
                 </form>
                 {error && <p>{error}</p>}
+                <span className="separator"/>
+                <div className="create-account-btn" onClick={handleRegister}>
+                    Créer votre compte
+                </div>
             </div>
         </div>
     );

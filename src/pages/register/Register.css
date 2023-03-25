@@ -1,0 +1,72 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f2f2;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 10px;
+    width: 100%;
+}
+
+.register-input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.register-input-container label {
+    width: 30%;
+    text-align: right;
+    margin-right: 10px;
+}
+
+
+.register-input-container input[type="text"],
+.register-input-container input[type="email"],
+.register-input-container input[type="password"] {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 70%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.register-button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.register-button:hover {
+    color: #555;
+}
+
+.error-message {
+    color: red;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: end;
+}
+

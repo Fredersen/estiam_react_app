@@ -17,7 +17,7 @@ export default function Delivery () {
     const [email, setEmail] = useState("");
     const [additionnalInfo, setAdditionnalInfo] = useState("");
     const [selectedDelivery, setSelectedDelivery] = useState(null);
-    const [civility, setCivility] = useState("");
+    const [civility, setCivility] = useState("Mme");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -125,11 +125,11 @@ export default function Delivery () {
                         </div>
                     </div>
                     <div className="error-message-container">
-                        {errors.firstName && (
-                            <div className="error-message">{errors.firstName}</div>
-                        )}
                         {errors.name && (
                             <div className="error-message">{errors.name}</div>
+                        )}
+                        {errors.firstName && (
+                            <div className="error-message">{errors.firstName}</div>
                         )}
                     </div>
                 </div>

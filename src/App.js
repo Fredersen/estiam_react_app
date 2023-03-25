@@ -5,7 +5,6 @@ import Home from "./pages/home/Home";
 import Footer from "./components/footer/Footer";
 import Product from "./pages/product/Product";
 import ProductItem from "./pages/productItem/ProductItem";
-import Login from "./pages/login/Login";
 import {useState} from "react";
 import {CartContextProvider} from "./contexts/CartContext";
 import Cart from "./pages/cart/Cart";
@@ -42,7 +41,6 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path='/:slug' element={<Product products={filteredProduct} />} />
                         <Route path='/produits/:id' element={<ProductItem />} />
-                        <Route path='/se-connecter' element={<Login />} />
                         <Route path='/panier' element={<Cart />} />
                         <Route path = '/livraison' element={<Delivery />} />
                     </Routes>

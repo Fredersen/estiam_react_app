@@ -67,3 +67,16 @@
     font-size: 0.8rem;
     text-align: center;
 }
+
+.separator {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+}
+
+button.create-account-btn {
+    margin-top: 10px;
+    background-color: #555;
+}

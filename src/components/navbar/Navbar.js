@@ -5,38 +5,48 @@ import {IoLogoFoursquare} from "react-icons/io";
 import Category from "../category/Category";
 import {Link} from "react-router-dom";
 import {CgProfile} from "react-icons/cg";
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import CartContext from "../../contexts/CartContext";
+import Login from "../../pages/login/Login";
+import Register from "../../pages/register/Register";
+import axios from "axios";
 
 export default function Navbar({ handleSearch }) {
-    const CATEGORY_DATA = [
-        {
-            id: 1,
-            title: 'Colliers',
-            slug: 'colliers',
-        },
-        {
-            id: 2,
-            title: 'Boucles d\'oreilles',
-            slug: 'boucles-oreilles',
-        },
-        {
-            id: 3,
-            title: 'Bracelets',
-            slug: 'bracelets',
-        },
-        {
-            id: 4,
-            title: 'Bagues',
-            slug: 'bagues',
-        },
-    ];
-
     const { cart } = useContext(CartContext);
+    const [showLogin, setShowLogin] = useState(false);
+    const [showRegister, setShowRegister] = useState(false);
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/api/categories/');
+                setCategories(response.data.data);
+            }
+            catch (e) {
+                console.log(e);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const toggleLogin = () => {
+        setShowLogin(!showLogin);
+    };
+
+    function handleOutsideClick(e) {
+        if (e.target.classList.contains('login-popup')) {
+            setShowLogin(false);
+            setShowRegister(false);
+        }
+    }
 
     const cartCount = Object.values(cart).reduce((total, item) => {
         return total + item.quantity;
     }, 0);
+
+    console.log(categories);
 
     return (
         <>
@@ -58,20 +68,36 @@ export default function Navbar({ handleSearch }) {
                             <div className="cart-count">{cartCount}</div>
                         )}
                     </Link>
-                    <Link to={'/se-connecter'}>
+                    <button onClick={toggleLogin} className="profile-icon-button">
                         <CgProfile />
-                    </Link>
+                    </button>
                 </div>
             </nav>
             <div className="nav-category">
                 <ul className="nav-category-link">
-                    {CATEGORY_DATA.map((category) => (
+                    {categories.map((category) => (
                         <li key={category.id}>
-                            <Category title={category.title} slug={category.slug} />
+                            <Category name={category.name} slug={category.slug} />
                         </li>
                     ))}
                 </ul>
             </div>
+            {showLogin && (
+                <div
+                    className="login-popup"
+                    onClick={handleOutsideClick}
+                >
+                    <Login setShowRegister={setShowRegister} />
+                </div>
+            )}
+            {showRegister && (
+                <div
+                    className="login-popup"
+                    onClick={handleOutsideClick}
+                >
+                    <Register />
+                </div>
+            )}
         </>
     );
 }

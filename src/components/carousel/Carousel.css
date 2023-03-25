@@ -14,7 +14,7 @@
     cursor: pointer;
     font-size: 2rem;
     color: white;
-    z-index: 1000;
+    z-index: 1;
 }
 
 .left-arrow {
