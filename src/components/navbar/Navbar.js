@@ -10,6 +10,7 @@ import CartContext from "../../contexts/CartContext";
 import Login from "../../pages/login/Login";
 import Register from "../../pages/register/Register";
 import axios from "axios";
+import categoryApi from "../../services/categoryApi";
 
 export default function Navbar({ handleSearch }) {
     const { cart } = useContext(CartContext);
@@ -20,8 +21,8 @@ export default function Navbar({ handleSearch }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/categories/');
-                setCategories(response.data.data);
+                const categories = await categoryApi.findAll();
+                setCategories(categories);
             }
             catch (e) {
                 console.log(e);
@@ -45,8 +46,6 @@ export default function Navbar({ handleSearch }) {
     const cartCount = Object.values(cart).reduce((total, item) => {
         return total + item.quantity;
     }, 0);
-
-    console.log(categories);
 
     return (
         <>
