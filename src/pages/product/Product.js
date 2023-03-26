@@ -2,11 +2,37 @@ import ProductCard from "../../components/productCard/ProductCard";
 import "./Product.css";
 import Title from "../../components/title/Title";
 import { useParams } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import productApi from "../../services/productApi";
+import Loading from "../../components/loading/Loading";
 
-export default function Product({ products }) {
+export default function Product({ filteredProduct }) {
     const { slug } = useParams();
     const [sortOrder, setSortOrder] = useState("none");
+    const [isLoading, setIsLoading] = useState(true);
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            if (slug !== 'produits') {
+                try {
+                    const data = await productApi.findByCategory(slug);
+                    setProducts(data);
+                } catch (error) {
+                    console.log(error.response);
+                }
+            } else {
+                setProducts(filteredProduct);
+            }
+            setIsLoading(false);
+        };
+
+        fetchProduct();
+    }, [slug, filteredProduct]);
+
+    function handleSortChange(event) {
+        setSortOrder(event.target.value);
+    }
 
     function handleSortChange(event) {
         setSortOrder(event.target.value);
@@ -40,9 +66,11 @@ export default function Product({ products }) {
                 )}
             </div>
             <div className={"product-card-container"}>
-                {sortedProducts.length > 0 ? (
+                {isLoading ? (
+                    <Loading />
+                ) : sortedProducts.length > 0 ? (
                     sortedProducts.map((product) => (
-                        <ProductCard key={product.id} product={product} />
+                        <ProductCard key={product._id} product={product} />
                     ))
                 ) : (
                     <p>Il n'y a pas de produits correspondant à votre recherche</p>

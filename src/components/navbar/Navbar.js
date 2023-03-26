@@ -75,8 +75,8 @@ export default function Navbar({ handleSearch }) {
             <div className="nav-category">
                 <ul className="nav-category-link">
                     {categories.map((category) => (
-                        <li key={category.id}>
-                            <Category name={category.name} slug={category.slug} />
+                        <li key={category._id}>
+                            <Category category={category} />
                         </li>
                     ))}
                 </ul>
@@ -94,7 +94,7 @@ export default function Navbar({ handleSearch }) {
                     className="login-popup"
                     onClick={handleOutsideClick}
                 >
-                    <Register />
+                    <Register setShowRegister={setShowRegister} />
                 </div>
             )}
         </>

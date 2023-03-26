@@ -17,6 +17,7 @@ export default function Cart() {
     }
 
     const cartItems = Object.values(cart);
+
     let totalPrice = cartItems.reduce((total, item) => {
         return total + item.price * item.quantity
     }, 0);
@@ -27,9 +28,6 @@ export default function Cart() {
         return total + item.quantity;
     }, 0);
     totalPrice = formatPrice(totalPrice);
-
-    console.log(totalPriceAndDelivery)
-
 
     const increment = (id) => {
         updateItemQuantity(id, cart[id].quantity + 1);
@@ -53,7 +51,7 @@ export default function Cart() {
                 <div className="cart-container">
                     <div className="cart-items">
                         {cartItems.map((item) => (
-                            <div className="cart-item" key={item.id}>
+                            <div className="cart-item" key={item._id}>
                                 <div className="cart-item-image">
                                     <img src={item.image} alt={item.name} />
                                 </div>
@@ -62,14 +60,14 @@ export default function Cart() {
                                         <div className="cart-item-title">{item.name}</div>
                                         <div className="cart-item-price">{formatPrice(item.price)}</div>
                                         <div className="cart-item-quantity">
-                                            <button className="cart-item-quantity-button" onClick={() => decrement(item.id)}>-</button>
+                                            <button className="cart-item-quantity-button" onClick={() => decrement(item._id)}>-</button>
                                             <span className="cart-item-quantity-value">{item.quantity}</span>
-                                            <button className="cart-item-quantity-button" onClick={() => increment(item.id)}>+</button>
+                                            <button className="cart-item-quantity-button" onClick={() => increment(item._id)}>+</button>
                                         </div>
                                     </div>
                                     <div className="cart-item-details-right">
                                         <div className="cart-item-total-price">{formatPrice(item.price * item.quantity)}</div>
-                                        <button className="cart-item-remove-button" onClick={() => remove(item.id)}>Supprimer</button>
+                                        <button className="cart-item-remove-button" onClick={() => remove(item._id)}>Supprimer</button>
                                     </div>
                                 </div>
                             </div>

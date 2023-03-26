@@ -17,10 +17,10 @@ export function CartContextProvider(props) {
     const addItemToCart = (item, quantity) => {
         setCart((prevCart) => {
             const updatedCart = { ...prevCart };
-            if (updatedCart[item.id]) {
-                updatedCart[item.id].quantity += item.quantity;
+            if (updatedCart[item._id]) {
+                updatedCart[item._id].quantity += item.quantity;
             } else {
-                updatedCart[item.id] = item;
+                updatedCart[item._id] = item;
             }
             return updatedCart;
         });

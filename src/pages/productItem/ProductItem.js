@@ -1,25 +1,30 @@
 import './ProductItem.css'
 import Title from "../../components/title/Title";
-import {useState, useContext } from "react";
+import {useState, useContext, useEffect } from "react";
 import {useParams} from "react-router-dom";
 import CartContext from "../../contexts/CartContext";
+import productApi from "../../services/productApi";
+import Loading from "../../components/loading/Loading";
 
 export default function ProductItem() {
     const { id } = useParams();
-    const product = {
-        id: parseInt(id),
-        name: 'Collier en argent',
-        price: 29.99,
-        date: '2022-01-01',
-        description:
-            'Collier en argent 925/1000e, avec une chaîne de 45 cm et un pendentif en forme de coeur de 2 cm de diamètre. Ce collier est livré dans une pochette en organza.',
-        image:
-            'https://cdn-fsly.yottaa.net/60a2795ad93140a5dc7453d7/fr.pandora.net/v~4b.f/dw/image/v2/BFCR_PRD/on/demandware.static/-/Sites-pandora-master-catalog/default/dwdb236c34/productimages/main/168289C01_RGB.jpg?sw=900&sh=900&sm=fit&sfrm=png&bgcolor=F5F5F5&yocs=8_d_',
-    };
-
+    const [product, setProduct] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
     const { cart, addItemToCart } = useContext(CartContext);
-
     const [quantity, setQuantity] = useState(1);
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const fetchedProduct = await productApi.find(id);
+                setProduct(fetchedProduct);
+                setIsLoading(false);
+            } catch (error) {
+                console.log(error.response);
+            }
+        }
+        fetchProduct();
+    }, []);
 
     function handleAddToCart() {
         product.quantity = quantity;
@@ -32,7 +37,8 @@ export default function ProductItem() {
     return (
         <div className="container product-item-container">
             <Title title={product.name} />
-            <div className="product-item">
+            {isLoading ? (
+                <Loading />) : (    <div className="product-item">
                 <div className="product-item-image">
                     <img src={product.image} alt="image" />
                 </div>
@@ -47,7 +53,7 @@ export default function ProductItem() {
                     </select>
                     <button onClick={handleAddToCart}>Ajouter au panier</button>
                 </div>
-            </div>
+            </div>)}
         </div>
     );
 }

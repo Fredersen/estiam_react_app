@@ -1,7 +1,8 @@
 import {useState} from "react";
 import "./Register.css";
+import userApi from "../../services/userApi";
 
-export default function Register() {
+export default function Register({ setShowRegister}) {
     const [name, setName] = useState('');
     const [firstName, setFirstName] = useState('');
     const [email, setEmail] = useState('');
@@ -39,11 +40,18 @@ export default function Register() {
         return validationErrors;
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = validateData();
         if (Object.keys(validationErrors).length === 0) {
-            console.log('Formulaire validé');
+            try {
+                const response = await userApi.create({ firstname: firstName, lastname: name, email, password })
+                response.success && setShowRegister(false);
+            }
+            catch (e) {
+                console.error(e);
+            }
+
         } else {
             setErrors(validationErrors);
         }
@@ -58,7 +66,7 @@ export default function Register() {
                         <label htmlFor="nom">Nom</label>
                         <input type="text" name="nom" id="nom" value={name} onChange={(e) => setName(e.target.value)} />
                     </div>
-                    <div classname="register-error-message-container">
+                    <div className="register-error-message-container">
                         {errors.name && <div className="error-message">{errors.name}</div>}
                     </div>
                     <div className="register-input-container">
@@ -83,7 +91,7 @@ export default function Register() {
                         <label htmlFor="passwordConfirm">Confirmer le mot de passe</label>
                         <input type="password" name="passwordConfirm" id="passwordConfirm" value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)} />
                     </div>
-                    <div classname="register-error-message-container">
+                    <div className="register-error-message-container">
                         {errors.passwordConfirm && <div className="error-message">{errors.passwordConfirm}</div>}
                     </div>
                     <div className="button-container">
