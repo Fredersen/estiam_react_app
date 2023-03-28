@@ -42,11 +42,16 @@ export function CartContextProvider(props) {
         });
     };
 
+    const clearCart = () => {
+        setCart({});
+    }
+
     const contextValue = {
         cart,
         addItemToCart,
         removeItemFromCart,
         updateItemQuantity,
+        clearCart
     };
 
     return (

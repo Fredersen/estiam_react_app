@@ -1,12 +1,18 @@
 import './Delivery.css';
 import Title from "../../components/title/Title";
-import { MdDone } from 'react-icons/md';
-import {useState} from "react";
+import {MdDone} from 'react-icons/md';
+import {useContext, useEffect, useState} from "react";
+import carrierApi from "../../services/carrierApi";
+import addressApi from "../../services/addressApi";
+import authApi from "../../services/authApi";
+import orderApi from "../../services/orderApi";
+import cartContext from "../../contexts/CartContext";
+import orderDetailApi from "../../services/orderDetailApi";
+import axios from "axios";
+import paymentApi from "../../services/paymentApi";
 
 export default function Delivery () {
-    const deliveryData = [{id: 1, name: "Colissimo", price: 5.00, description: "Livraison en 48h"},
-        {id: 2, name: "Chronopost", price: 10.00, description: "Livraison en 24h"},
-        {id: 3, name: "TNT", price: 15.00, description: "Livraison en 24h"}];
+    const [carriers, setCarriers] = useState([]);
     const [errors, setErrors] = useState({});
     const [name, setName] = useState("");
     const [firstName, setFirstName] = useState("");
@@ -19,13 +25,108 @@ export default function Delivery () {
     const [selectedDelivery, setSelectedDelivery] = useState(null);
     const [civility, setCivility] = useState("Mme");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const { cart } = useContext(cartContext);
+
+    useEffect(() => {
+        const fetchCarriers = async () => {
+            try {
+                const fetchedCarriers = await carrierApi.findAll();
+                setCarriers(fetchedCarriers);
+            } catch (error) {
+                console.log(error.response);
+            }
+        }
+
+        fetchCarriers();
+    }, []);
+
+    const handleSubmit = async (e) => {
         const validationErrors = validateData();
         if (Object.keys(validationErrors).length === 0) {
-            console.log("Formulaire validé")
+            try {
+                const orderId = await sendFullOrder();
+                const productsForCheckout = paymentApi.productsForCheckout(Object.values(cart));
+                productsForCheckout.push(paymentApi.carrierForCheckout(carriers.find(carrier => carrier._id === selectedDelivery)))
+                await paymentApi.createCheckoutSession(productsForCheckout, orderId);
+            } catch (error) {
+                console.log(error.response);
+            }
         } else {
             setErrors(validationErrors);
+        }
+    }
+
+
+    const sendOrder = async (order) => {
+        try {
+            return await orderApi.create(order);
+        } catch (error) {
+            console.log(error.response);
+        }
+    }
+
+    const sendFullOrder = async () => {
+        const address = await sendAddress(addressDto());
+        const orderToSend = orderDto('pending');
+        orderToSend.address = address._id;
+        const order = await sendOrder(orderToSend);
+        sendOrderDetail(orderDetailDto(order._id));
+
+        return order._id;
+    }
+
+    const sendOrderDetail = (orderDetails) => {
+        orderDetails.forEach(async (orderDetail) => {
+            try {
+                await orderDetailApi.create(orderDetail);
+            } catch (error) {
+                console.log(error.response);
+            }
+        })
+    }
+
+    const sendAddress = async (address) => {
+        try {
+            return await addressApi.create(address);
+        } catch (error) {
+            console.log(error.response);
+        }
+    }
+
+    const orderDto = (state) => {
+        const carrier = carriers.find(carrier => carrier._id === selectedDelivery)
+        return {
+            user: authApi.retrieveUserId(),
+            carrierName: carrier.name,
+            carrierPrice: carrier.price,
+            state,
+        }
+    }
+
+    const orderDetailDto = (orderId) => {
+        const cartItems = Object.values(cart);
+        return cartItems.map(cartItem => {
+            return {
+                order: orderId,
+                product: cartItem._id,
+                quantity: cartItem.quantity,
+                price: cartItem.price,
+                total: cartItem.price * cartItem.quantity
+            }
+        })
+    }
+
+    const addressDto = () => {
+        return {
+            civility,
+            name,
+            firstName,
+            address,
+            city,
+            postalCode,
+            phone,
+            email,
+            user: authApi.retrieveUserId()
         }
     }
 
@@ -77,16 +178,14 @@ export default function Delivery () {
         return validationErrors;
     };
 
-    console.log(selectedDelivery);
-
     return (
         <div className="delivery">
             <Title title="Choisir mon mode de livraison" />
             <div className="delivery-content">
-                {deliveryData.map((delivery) => (
-                    <div className="delivery-card" key={delivery.id}>
-                        <input type="radio" name="delivery" id={delivery.id} value={delivery.id} checked={selectedDelivery === delivery.id} onChange={e => setSelectedDelivery(delivery.id)} />
-                        <label htmlFor={delivery.id}>
+                {carriers.map((delivery) => (
+                    <div className="delivery-card" key={delivery._id}>
+                        <input type="radio" name="delivery" id={delivery._id} value={delivery.id} checked={selectedDelivery === delivery._id} onChange={e => setSelectedDelivery(delivery._id)} />
+                        <label htmlFor={delivery._id}>
                             <div className="delivery-card-title">{delivery.name}</div>
                             <div className="delivery-card-description">{delivery.description}</div>
                             <div className="delivery-card-price">{delivery.price} €</div>

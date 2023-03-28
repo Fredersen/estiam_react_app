@@ -9,7 +9,6 @@ import {useContext, useEffect, useState} from "react";
 import CartContext from "../../contexts/CartContext";
 import Login from "../../pages/login/Login";
 import Register from "../../pages/register/Register";
-import axios from "axios";
 import categoryApi from "../../services/categoryApi";
 
 export default function Navbar({ handleSearch }) {
@@ -86,7 +85,7 @@ export default function Navbar({ handleSearch }) {
                     className="login-popup"
                     onClick={handleOutsideClick}
                 >
-                    <Login setShowRegister={setShowRegister} />
+                    <Login setShowRegister={setShowRegister} toggleLogin={toggleLogin} />
                 </div>
             )}
             {showRegister && (

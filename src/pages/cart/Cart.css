@@ -128,6 +128,8 @@
 .empty-cart-message {
     font-size: 1.5rem;
     color: #999;
+    min-height: 20vh;
+    align-self: center;
 }
 
 .cart-item-details {

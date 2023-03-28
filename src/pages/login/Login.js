@@ -1,34 +1,28 @@
 import React, { useState } from 'react';
 import './Login.css';
+import authApi from "../../services/authApi";
 
-export default function Login({setShowRegister}) {
+export default function Login({setShowRegister, toggleLogin}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
-    function login(email, password) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                if (email === 'naim.jhuboo@gmail.com' && password === 'password') {
-                    resolve();
-                }
-                else {
-                    reject(new Error('Email ou mot de passe incorrect'));
-                }
-            }, 1000);
-        });
-    }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         try {
-            await login(email, password);
-            localStorage.setItem('ROLE', 'USER');
-            window.location.href = '/';
+            await authApi.authenticate({
+                email,
+                password
+            });
+
+            if(authApi.isAuthenticated()) {
+                toggleLogin();
+            }
+
         } catch (error) {
-            setError(error.message);
+            setError('Email ou mot de passe incorrect');
         }
         setLoading(false);
     };

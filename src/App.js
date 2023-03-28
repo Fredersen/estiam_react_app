@@ -10,6 +10,7 @@ import {CartContextProvider} from "./contexts/CartContext";
 import Cart from "./pages/cart/Cart";
 import Delivery from "./pages/delivery/Delivery";
 import productApi from "./services/productApi";
+import OrderSuccess from "./pages/order/OrderSuccess";
 
 function App() {
     const [products, setProducts] = useState([]);
@@ -29,6 +30,7 @@ function App() {
     }, []);
 
     function handleSearch(search) {
+        console.log(search);
         if (search !== '') {
             const filteredProducts = products.filter(product => {
                 return product.name.toLowerCase().includes(search.toLowerCase()) || product.description.toLowerCase().includes(search.toLowerCase());
@@ -50,6 +52,7 @@ function App() {
                         <Route path='/produits/:id' element={<ProductItem />} />
                         <Route path='/panier' element={<Cart />} />
                         <Route path ='/livraison' element={<Delivery />} />
+                        <Route path='/commande/merci/:id' element={<OrderSuccess />} />
                     </Routes>
                     <Outlet/>
                     <Footer />

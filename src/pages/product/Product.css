@@ -17,3 +17,12 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.product-card-container {
+    min-height: 25vh;
+}
+
+.empty-product-message {
+    font-size: 1.5rem;
+    color: #999;
+}

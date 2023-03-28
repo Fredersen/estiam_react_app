@@ -65,7 +65,7 @@ export default function Product({ filteredProduct }) {
                     </div>
                 )}
             </div>
-            <div className={"product-card-container"}>
+            <div className="product-card-container">
                 {isLoading ? (
                     <Loading />
                 ) : sortedProducts.length > 0 ? (
@@ -73,7 +73,7 @@ export default function Product({ filteredProduct }) {
                         <ProductCard key={product._id} product={product} />
                     ))
                 ) : (
-                    <p>Il n'y a pas de produits correspondant à votre recherche</p>
+                    <p className="empty-product-message">Il n'y a pas de produits correspondant à votre recherche</p>
                 )}
             </div>
         </>
