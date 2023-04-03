@@ -20,7 +20,7 @@ function authenticate(credentials) {
 }
 
 function setAxiosToken(token) {
-    axios.defaults.headers["Authorization"] = "Bearer " + token;
+    axios.defaults.headers.common["Authorization"] = "Bearer " + token;
 }
 
 function setup() {
@@ -69,5 +69,6 @@ export default {
     setup,
     isAuthenticated,
     retrieveRole,
-    retrieveUserId
+    retrieveUserId,
+    setAxiosToken
 }

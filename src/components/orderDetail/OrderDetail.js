@@ -2,7 +2,7 @@ import './OrderDetail.css';
 import {useEffect, useState} from "react";
 
 export default function OrderDetail({ order }) {
-    const [orderState, setOrderState] = useState('');
+    const [orderState, setOrderState] = useState();
 
     useEffect(() => {
         handleOrderState(order);

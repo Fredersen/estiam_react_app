@@ -14,11 +14,14 @@ import OrderSuccess from "./pages/order/OrderSuccess";
 import Account from "./pages/account/Account";
 import MyOrder from "./pages/myOrder/MyOrder";
 import ProtectedRoute from "./components/routes/ProtectedRoute";
+import authApi from "./services/authApi";
 
 function App() {
     const [products, setProducts] = useState([]);
     const [filteredProduct, setFilteredProduct] = useState([...products]);
     const [showLogin, setShowLogin] = useState(false);
+
+    authApi.setAxiosToken(window.localStorage.getItem("authToken"));
 
     useEffect(() => {
         const fetchData = async () => {

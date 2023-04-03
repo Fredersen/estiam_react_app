@@ -18,6 +18,7 @@ function create(user) {
 }
 
 function update(id, user) {
+    console.log(axios.defaults);
     return axios.put(apiBaseUrl + "/api/users/" + id, user)
         .then(response => response.data);
 }

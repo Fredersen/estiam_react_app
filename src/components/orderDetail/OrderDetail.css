@@ -90,9 +90,11 @@
     margin-bottom: 1rem;
 }
 
-.my-order-order-details-address-value {
+.my-order-order-details-address-value,
+.my-order-order-details-status-value{
     text-align: end;
 }
+
 
 .my-order__pagination {
     display: flex;
