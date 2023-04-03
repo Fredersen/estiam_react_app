@@ -136,18 +136,18 @@
     flex-grow: 2;
     display: flex;
     justify-content: space-between;
-    align-items: center; /* Ajouté */
+    align-items: center;
 }
 
 .cart-item-details-left {
-    display: flex; /* Ajouté */
-    flex-direction: column; /* Ajouté */
+    display: flex;
+    flex-direction: column;
 }
 
 .cart-item-details-right {
-    display: flex; /* Ajouté */
-    flex-direction: column; /* Ajouté */
-    align-items: flex-end; /* Ajouté */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 @media (min-width: 768px) {

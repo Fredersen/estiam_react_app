@@ -1,16 +1,36 @@
 import ProductCard from "../../components/productCard/ProductCard";
 import "./Product.css";
 import Title from "../../components/title/Title";
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import productApi from "../../services/productApi";
 import Loading from "../../components/loading/Loading";
+import categoryApi from "../../services/categoryApi";
 
 export default function Product({ filteredProduct }) {
     const { slug } = useParams();
     const [sortOrder, setSortOrder] = useState("none");
     const [isLoading, setIsLoading] = useState(true);
     const [products, setProducts] = useState([]);
+    const [category, setCategory] = useState([]);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const findCategory = await categoryApi.findBySlug(slug);
+                setCategory(findCategory);
+                if (slug !== 'produits' && !findCategory) {
+                    navigate('/');
+                }
+            }
+            catch (e) {
+                console.log(e);
+            }
+        };
+        fetchData();
+
+    }, [slug]);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -52,7 +72,7 @@ export default function Product({ filteredProduct }) {
     return (
         <>
             <div className="container">
-                {slug ? <Title title={slug} /> : <Title title={"Tous les produits"} />}
+                {category ? <Title title={category.name} /> : <Title title={"Tous les produits"} />}
                 {sortedProducts.length > 0 && (
                     <div className="select-products-container">
                         <select value={sortOrder} onChange={handleSortChange}>

@@ -3,8 +3,9 @@ import CartContext from "../../contexts/CartContext";
 import './Cart.css';
 import {Link} from "react-router-dom";
 import Title from "../../components/title/Title";
+import authApi from "../../services/authApi";
 
-export default function Cart() {
+export default function Cart({ showLogin, setShowLogin }) {
     const { cart, updateItemQuantity, removeItemFromCart } = useContext(CartContext);
 
     let deliveryCost = 5.00;
@@ -89,9 +90,15 @@ export default function Cart() {
                             <span className="order-details-total-price-label">Total</span>
                             <span className="order-details-total-price-value">{ totalPriceAndDelivery }</span>
                         </div>
-                        <Link to={'/livraison'}>
-                            <button className="order-details-button">Passer la commande</button>
-                        </Link>
+                        {authApi.isAuthenticated() ? (
+                            <Link to={'/livraison'}>
+                                <button className="order-details-button">Passer la commande</button>
+                            </Link>
+                        ) : (
+                            <div className="order-details-button-container">
+                                <button className="order-details-button" onClick={() => setShowLogin(true)}>Passer la commande</button>
+                            </div>
+                        )}
                     </div>
                 </div>
             ) : (

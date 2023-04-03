@@ -20,6 +20,12 @@ function findByServiceId(id) {
         .then(response => response.data.data);
 }
 
+function findByUserId(id) {
+    return axios
+        .get(apiBaseUrl + "/api/orders/user/" + id)
+        .then(response => response.data.data);
+}
+
 function create(order) {
     return axios
         .post(apiBaseUrl + "/api/orders/", order)
@@ -42,6 +48,7 @@ export default {
     findAll,
     find,
     findByServiceId,
+    findByUserId,
     create,
     update,
     delete: deleteOrder

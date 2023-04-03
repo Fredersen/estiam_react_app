@@ -3,12 +3,12 @@ import axios from "axios";
 const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
 function findAll() {
-    axios.get(apiBaseUrl + "/api/users/")
+    return axios.get(apiBaseUrl + "/api/users/")
         .then(response => response.data.data);
 }
 
 function find(id) {
-    axios.get(apiBaseUrl + "/api/users/" + id)
+    return axios.get(apiBaseUrl + "/api/users/" + id)
         .then(response => response.data.data);
 }
 
@@ -23,7 +23,7 @@ function update(id, user) {
 }
 
 function deleteUser(id) {
-    axios.delete(apiBaseUrl + "/api/users/" + id)
+    return axios.delete(apiBaseUrl + "/api/users/" + id)
         .then(response => response.data);
 }
 

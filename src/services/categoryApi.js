@@ -14,6 +14,12 @@ function find(id) {
         .then(response => response.data.data);
 }
 
+function findBySlug(slug) {
+    return axios
+        .get(apiBaseUrl + '/api/categories/slug/' + slug)
+        .then(response => response.data.data);
+}
+
 function create(category) {
     return axios
         .post(apiBaseUrl + '/api/categories/', category)
@@ -35,6 +41,7 @@ function deleteCategory(id) {
 export default {
     findAll,
     find,
+    findBySlug,
     create,
     update,
     delete: deleteCategory

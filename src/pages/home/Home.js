@@ -44,15 +44,15 @@ export default function Home () {
                     <Loading />
                 ) : (
                     <>
-                        {featuredProductList.map((featuredProduct) => (
-                            <>
+                        {featuredProductList.map((featuredProduct, index) => (
+                            <span key={index}>
                                 <Title title={featuredProduct.name} />
                                 <div className="product-card-container">
                                     {productsByCategory[featuredProduct.name].map((product) => (
-                                        <ProductCard key={product.id} product={product} />
+                                        <ProductCard key={product._id} product={product} />
                                     ))}
                                 </div>
-                            </>
+                            </span>
                         ))}
                     </>
                 )}

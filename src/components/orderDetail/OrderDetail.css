@@ -1,0 +1,148 @@
+.my-order-product-container {
+    display: flex;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.my-order-product-items {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.my-order-product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #eee;
+}
+
+.my-order-product-item-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 1rem;
+    flex-grow: 1;
+}
+
+.my-order-product-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.my-order-product-item-details {
+    flex-grow: 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+.my-order-product-item-details-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.my-order-product-item-title,
+.my-order-product-item-price,
+.my-order-product-item-quantity,
+.my-order-product-item-total-price {
+    margin-bottom: 0.5rem;
+}
+
+.my-order-product-item-title,
+.my-order-product-item-total-price {
+    font-weight: 600;
+}
+
+.my-order-product-item-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.my-order-product-item-quantity-value {
+    font-size: 1rem;
+}
+
+.my-order-order-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f5f5f5;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+}
+
+.my-order-order-details-title-text,
+.my-order-order-details-total-price-label {
+    font-weight: bold;
+}
+
+.my-order-order-details-sub-total,
+.my-order-order-details-shipping,
+.my-order-order-details-total,
+.my-order-order-details-status,
+.my-order-order-details-date,
+.my-order-order-details-address{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.my-order-order-details-address-value {
+    text-align: end;
+}
+
+.my-order__pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.my-order__pagination-button {
+    background-color: #f5f5f5;
+    border: none;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+
+.my-order__pagination-button--active {
+    background-color: #333;
+    color: #fff;
+}
+
+.my-order-order-details-title h2 {
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+.my-order-order-details-title span {
+    font-weight: 300;
+    font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+    .my-order-product-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .my-order-product-items {
+        flex: 1;
+        margin-right: 2rem;
+    }
+
+    .my-order-order-details {
+        flex: 0 0 300px;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .my-order-product-container {
+        flex-direction: column;
+    }
+}
