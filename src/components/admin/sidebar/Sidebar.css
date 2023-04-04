@@ -1,0 +1,33 @@
+.admin-container {
+    display: flex;
+}
+
+.admin-left-menu {
+    width: 250px;
+    background-color: #f5f5f5;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-left-menu-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.admin-left-menu-item-title {
+    font-size: 16px;
+    color: #333;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+
+.admin-left-menu-item-title:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}

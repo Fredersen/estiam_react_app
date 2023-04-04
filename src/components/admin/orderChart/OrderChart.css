@@ -1,0 +1,11 @@
+.admin-right-content-chart-title {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-right-content-chart-title-text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333;
+}

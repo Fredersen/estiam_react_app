@@ -14,7 +14,9 @@ import OrderSuccess from "./pages/order/OrderSuccess";
 import Account from "./pages/account/Account";
 import MyOrder from "./pages/myOrder/MyOrder";
 import ProtectedRoute from "./components/routes/ProtectedRoute";
+import AdminDashboard from "./pages/admin/adminDashboard/AdminDashboard";
 import authApi from "./services/authApi";
+import AdminRoute from "./components/routes/AdminRoute";
 
 function App() {
     const [products, setProducts] = useState([]);
@@ -77,6 +79,11 @@ function App() {
                             <ProtectedRoute>
                                 <MyOrder />
                             </ProtectedRoute>
+                        } />
+                        <Route path='/admin' element={
+                            <AdminRoute>
+                                <AdminDashboard />
+                            </AdminRoute>
                         } />
                     </Routes>
                     <Footer />

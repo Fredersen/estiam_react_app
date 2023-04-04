@@ -48,8 +48,8 @@ function isAuthenticated() {
 function retrieveRole() {
     const token = window.localStorage.getItem("authToken");
     if (token) {
-        const { roles } = jwtDecode(token);
-        return roles;
+        const { role } = jwtDecode(token);
+        return role;
     }
     return [];
 }
