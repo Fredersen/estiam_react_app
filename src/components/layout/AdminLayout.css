@@ -1,0 +1,9 @@
+.admin-right-content {
+    flex-grow: 1;
+    padding: 24px;
+}
+
+.admin-right-content-container {
+    display: flex;
+    flex-direction: column;
+}

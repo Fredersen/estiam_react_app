@@ -17,7 +17,10 @@ function find(id) {
 function findByServiceId(id) {
     return axios
         .get(apiBaseUrl + "/api/orders/service/" + id)
-        .then(response => response.data.data);
+        .then(response => {
+            console.log("findByServiceId response:", response.data.data);
+            return response.data.data;
+        });
 }
 
 function findByUserId(id) {
@@ -35,9 +38,11 @@ function create(order) {
 function update(id, order) {
     return axios
         .put(apiBaseUrl + "/api/orders/" + id, order)
-        .then(response => response.data.data);
+        .then(response => {
+            console.log("update response:", response.data.data);
+            return response.data.data;
+        });
 }
-
 function deleteOrder(id) {
     return axios
         .delete(apiBaseUrl + "/api/orders/" + id)

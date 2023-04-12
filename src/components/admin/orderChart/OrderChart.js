@@ -14,20 +14,26 @@ ChartJS.register(
     TimeScale
 );
 
-export default function OrderChart() {
+export default function OrderChart({ orderFromThisMonth }) {
     const [chartData, setChartData] = useState([]);
 
     const generateChartData = () => {
         const data = [];
         const startDate = moment().subtract(30, 'days');
 
+
         for (let i = 0; i <= 30;
              i++) {
             data.push({
                 x: startDate.clone().add(i, 'days').format('YYYY-MM-DD'),
-                y: Math.floor(Math.random() * (100 - 10 + 1) + 10),
+                y: orderFromThisMonth.filter(order => {
+                    return moment(order.createdAt).format('YYYY-MM-DD') === startDate.clone().add(i, 'days').format('YYYY-MM-DD');
+                }).length,
             });
         }
+
+        console.log(data);
+
         setChartData(data);
     };
 
@@ -61,7 +67,7 @@ export default function OrderChart() {
 
     useEffect(() => {
         generateChartData();
-    }, []);
+    }, [orderFromThisMonth]);
 
     return (
         <>

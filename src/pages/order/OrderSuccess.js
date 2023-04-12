@@ -32,7 +32,9 @@ export default function OrderSuccess() {
     async function checkCredentials(order) {
         if (!order || order.stripeSessionId !== id || order.user !== authApi.retrieveUserId()) {
         } else {
-            return await orderApi.update(order._id, { state: 'paid' });
+            const updatedOrder = await orderApi.update(order._id, { state: 'paid' });
+            console.log("updatedOrder:", updatedOrder);
+            return updatedOrder;
         }
     }
 

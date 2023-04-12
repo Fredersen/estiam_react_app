@@ -17,6 +17,9 @@ import ProtectedRoute from "./components/routes/ProtectedRoute";
 import AdminDashboard from "./pages/admin/adminDashboard/AdminDashboard";
 import authApi from "./services/authApi";
 import AdminRoute from "./components/routes/AdminRoute";
+import ProductDashboard from "./pages/admin/product/productDashboard/ProductDashboard";
+import CreateProduct from "./pages/admin/product/create/CreateProduct";
+import EditProduct from "./pages/admin/product/edit/EditProduct";
 
 function App() {
     const [products, setProducts] = useState([]);
@@ -83,6 +86,21 @@ function App() {
                         <Route path='/admin' element={
                             <AdminRoute>
                                 <AdminDashboard />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/produits' element={
+                            <AdminRoute>
+                                <ProductDashboard />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/produits/ajout' element={
+                            <AdminRoute>
+                                <CreateProduct />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/produits/modification/:id' element={
+                            <AdminRoute>
+                                <EditProduct />
                             </AdminRoute>
                         } />
                     </Routes>

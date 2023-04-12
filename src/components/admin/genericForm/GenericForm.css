@@ -1,0 +1,36 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.form-field label {
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+    z-index: 10;
+    background-color: white;
+}
+
+.form-field input,
+.form-field select {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+    outline: none;
+    border-color: #007bff;
+}

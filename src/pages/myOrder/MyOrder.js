@@ -10,10 +10,16 @@ const ORDERS_PER_PAGE = 5;
 export default function MyOrder() {
     const [orders, setOrders] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+
     useEffect(() => {
         const fetchOrders = async () => {
             try {
                 const fetchedOrders = await orderApi.findByUserId(authApi.retrieveUserId());
+                fetchedOrders.sort((a, b) => {
+                    const dateA = new Date(a.createdAt);
+                    const dateB = new Date(b.createdAt);
+                    return dateB - dateA;
+                });
                 setOrders(fetchedOrders);
             } catch (error) {
                 console.log(error.response);

@@ -17,7 +17,7 @@ export default function Widget({title, value,  percentageIncrease, icon}) {
                             {icon}
                         </div>
                         <Typography variant="subtitle1" component="div" className="admin-right-content-widget-percentage">
-                            {percentageIncrease >= 0 ? `+${percentageIncrease}%` : `${percentageIncrease}%`}
+                            {( percentageIncrease !== null && percentageIncrease >= 0) && `+${percentageIncrease}%`}
                         </Typography>
                     </div>
                 </div>
