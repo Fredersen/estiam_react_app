@@ -20,6 +20,9 @@ import AdminRoute from "./components/routes/AdminRoute";
 import ProductDashboard from "./pages/admin/product/productDashboard/ProductDashboard";
 import CreateProduct from "./pages/admin/product/create/CreateProduct";
 import EditProduct from "./pages/admin/product/edit/EditProduct";
+import CategoryDashboard from "./pages/admin/category/categoryDashboard/CategoryDashboard";
+import CreateCategory from "./pages/admin/category/create/CreateCategory";
+import EditCategory from "./pages/admin/category/edit/EditCategory";
 
 function App() {
     const [products, setProducts] = useState([]);
@@ -101,6 +104,21 @@ function App() {
                         <Route path='/admin/produits/modification/:id' element={
                             <AdminRoute>
                                 <EditProduct />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/categories' element={
+                            <AdminRoute>
+                                <CategoryDashboard />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/categories/ajout' element={
+                            <AdminRoute>
+                                <CreateCategory />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/categories/modification/:id' element={
+                            <AdminRoute>
+                                <EditCategory />
                             </AdminRoute>
                         } />
                     </Routes>

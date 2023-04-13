@@ -16,12 +16,12 @@ export default function ProductDashboard() {
     const navigate = useNavigate();
 
     const fetchProducts = async () => {
-        const products = await productApi.findAll();
-        setProducts(products);
+        const data = await productApi.findAll();
+        setProducts(data);
     }
     const fetchCategories = async () => {
-        const categories = await categoryApi.findAll();
-        setCategories(categories);
+        const data = await categoryApi.findAll();
+        setCategories(data);
     }
 
     const prepareProducts = () => {
@@ -44,7 +44,6 @@ export default function ProductDashboard() {
 
 
     const handleDelete = async (id) => {
-        console.log(id)
         try {
             await productApi.delete(id);
             setProducts(products.filter(product => product._id !== id));
@@ -60,7 +59,7 @@ export default function ProductDashboard() {
     const deleteAction = {
         label: 'delete product',
         icon: <DeleteIcon />,
-        color: 'secondary',
+        color: 'error',
         action: handleDelete
     }
 
@@ -77,7 +76,7 @@ export default function ProductDashboard() {
             <div className="button-container">
                 <CreateButton label="Créer un produit" link="/admin/produits/ajout" />
             </div>
-            <TableComponent items={products} columns={['name', 'description', 'price', 'image', 'category']} actions={[deleteAction, editAction]} />
+            <TableComponent items={products} columns={['name', 'description', 'price', 'image', 'category']} actions={[editAction, deleteAction]} />
         </AdminLayout>
     )
 }

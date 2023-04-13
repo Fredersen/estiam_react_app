@@ -83,12 +83,11 @@ export default function GenericForm({
                         />
                     </Box>
                 ) : fieldName === "category" ? (
-                    <Box key={fieldName} sx={{ mb: 2 }} className="form-field">
+                    <Box key={fieldName} sx={{ mb: 2 }} className="form-field category-field">
                         <FormControl fullWidth variant="outlined" error={!!errors[fieldName]}>
-                            <InputLabel>{fieldName}</InputLabel>
+                            <InputLabel className="custom-label category-label">{fieldName}</InputLabel>
                             <Select
                                 name={fieldName}
-                                label={fieldName}
                                 value={values[fieldName]}
                                 onChange={handleChange}
                             >
@@ -103,9 +102,9 @@ export default function GenericForm({
                     </Box>
                 ) : (
                     <Box key={fieldName} sx={{ mb: 2 }} className="form-field">
+                        <InputLabel className="custom-label">{fieldName}</InputLabel>
                         <TextField
                             name={fieldName}
-                            label={fieldName}
                             value={values[fieldName]}
                             onChange={handleChange}
                             variant="outlined"

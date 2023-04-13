@@ -13,11 +13,19 @@
     width: 100%;
 }
 
-.form-field label {
+.form-field label, .form-field .category-label {
     font-size: 0.875rem;
     margin-bottom: 0.25rem;
     z-index: 10;
     background-color: white;
+}
+
+.form-field .category-label {
+    transform: translateY(-1.5rem);
+}
+
+.form-field.category-field {
+    margin-top: 1.115rem;
 }
 
 .form-field input,

@@ -35,14 +35,8 @@ function setup() {
 
 function isAuthenticated() {
     const token = window.localStorage.getItem("authToken");
-    if (token) {
-        const { exp: expiration } = jwtDecode(token);
-        if (expiration * 3000 > new Date().getTime()) {
-            return true;
-        }
-        return false;
-    }
-    return false;
+
+    return !!token;
 }
 
 function retrieveRole() {

@@ -37,6 +37,7 @@ export default function Product({ filteredProduct }) {
             if (slug !== 'produits') {
                 try {
                     const data = await productApi.findByCategory(slug);
+                    console.log(data);
                     setProducts(data);
                 } catch (error) {
                     console.log(error.response);
@@ -49,10 +50,6 @@ export default function Product({ filteredProduct }) {
 
         fetchProduct();
     }, [slug, filteredProduct]);
-
-    function handleSortChange(event) {
-        setSortOrder(event.target.value);
-    }
 
     function handleSortChange(event) {
         setSortOrder(event.target.value);
