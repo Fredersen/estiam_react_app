@@ -18,9 +18,9 @@ function create(user) {
 }
 
 function update(id, user) {
-    console.log(axios.defaults);
+    console.log(user);
     return axios.put(apiBaseUrl + "/api/users/" + id, user)
-        .then(response => response.data);
+        .then(response => response.data.data);
 }
 
 function deleteUser(id) {

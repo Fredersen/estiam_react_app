@@ -23,6 +23,8 @@ import EditProduct from "./pages/admin/product/edit/EditProduct";
 import CategoryDashboard from "./pages/admin/category/categoryDashboard/CategoryDashboard";
 import CreateCategory from "./pages/admin/category/create/CreateCategory";
 import EditCategory from "./pages/admin/category/edit/EditCategory";
+import UserDashboard from "./pages/admin/user/userDashboard/UserDashboard";
+import EditUser from "./pages/admin/user/edit/EditUser";
 
 function App() {
     const [products, setProducts] = useState([]);
@@ -119,6 +121,16 @@ function App() {
                         <Route path='/admin/categories/modification/:id' element={
                             <AdminRoute>
                                 <EditCategory />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/utilisateurs' element={
+                            <AdminRoute>
+                                <UserDashboard />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/utilisateurs/modification/:id' element={
+                            <AdminRoute>
+                                <EditUser />
                             </AdminRoute>
                         } />
                     </Routes>

@@ -23,8 +23,8 @@ export default function CategoryDashboard() {
 
     const handleDelete = async (id) => {
         try {
-            await categoryApi.delete(id);
             setCategories(categories.filter(category => category._id !== id));
+            await categoryApi.delete(id);
         } catch (error) {
             console.error(error);
         }

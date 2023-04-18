@@ -78,18 +78,10 @@ export default function EditProduct() {
 
     const onSubmit = async (values) => {
         try {
-            const formData = new FormData();
-            formData.append('name', values.name);
-            formData.append('description', values.description);
-            formData.append('price', values.price);
-            if(values.image) {
-                formData.append('image', values.image);
-            }
-            formData.append('category', values.category);
-            await productApi.update(id, formData);
+            await productApi.update(id, values);
             navigate('/admin/produits');
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     };
 
