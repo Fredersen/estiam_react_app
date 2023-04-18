@@ -25,6 +25,8 @@ import CreateCategory from "./pages/admin/category/create/CreateCategory";
 import EditCategory from "./pages/admin/category/edit/EditCategory";
 import UserDashboard from "./pages/admin/user/userDashboard/UserDashboard";
 import EditUser from "./pages/admin/user/edit/EditUser";
+import OrderDashboard from "./pages/admin/order/orderDashboard/OrderDashboard";
+import EditOrder from "./pages/admin/order/edit/EditOrder";
 
 function App() {
     const [products, setProducts] = useState([]);
@@ -133,6 +135,17 @@ function App() {
                                 <EditUser />
                             </AdminRoute>
                         } />
+                        <Route path='/admin/commandes' element={
+                            <AdminRoute>
+                                <OrderDashboard />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/commandes/modification/:id' element={
+                            <AdminRoute>
+                                <EditOrder />
+                            </AdminRoute>
+                        } />
+                        }
                     </Routes>
                     <Footer />
                 </div>

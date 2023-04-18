@@ -93,9 +93,12 @@ export default function TableComponent({items, columns, actions}) {
                                     <TableCell key={column}>
                                         {column === "image" ? (
                                             <img src={item[column]} alt="product image" width="50" height="50" />
-                                        ) : (
-                                            item[column]
-                                        )}
+                                        ) : column === "address" ? (
+                                                item[column].address + ", " + item[column].postalCode + ", " + item[column].city
+                                            )
+                                            : (
+                                                item[column]
+                                            )}
                                     </TableCell>
                                 ))}
                                 <TableCell>

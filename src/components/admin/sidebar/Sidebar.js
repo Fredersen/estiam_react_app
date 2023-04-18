@@ -35,7 +35,7 @@ export default function Sidebar() {
                         <CategoryIcon /> Catégories
                     </div>
                 </Link>
-                <Link to={"/admin/orders"}>
+                <Link to={"/admin/commandes"}>
                     <div className={'admin-left-menu-item-title'}>
                         <ShoppingCartIcon /> Commandes
                     </div>
