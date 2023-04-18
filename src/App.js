@@ -27,6 +27,9 @@ import UserDashboard from "./pages/admin/user/userDashboard/UserDashboard";
 import EditUser from "./pages/admin/user/edit/EditUser";
 import OrderDashboard from "./pages/admin/order/orderDashboard/OrderDashboard";
 import EditOrder from "./pages/admin/order/edit/EditOrder";
+import CarrierDashboard from "./pages/admin/carrier/carrierDashboard/CarrierDashboard";
+import CreateCarrier from "./pages/admin/carrier/create/CreateCarrier";
+import EditCarrier from "./pages/admin/carrier/edit/EditCarrier";
 
 function App() {
     const [products, setProducts] = useState([]);
@@ -145,7 +148,21 @@ function App() {
                                 <EditOrder />
                             </AdminRoute>
                         } />
-                        }
+                        <Route path='/admin/transporteurs' element={
+                            <AdminRoute>
+                                <CarrierDashboard />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/transporteurs/ajout' element={
+                            <AdminRoute>
+                                <CreateCarrier />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/transporteurs/modification/:id' element={
+                            <AdminRoute>
+                                <EditCarrier />
+                            </AdminRoute>
+                        } />
                     </Routes>
                     <Footer />
                 </div>
