@@ -8,6 +8,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import HomeIcon from "@mui/icons-material/Home";
 import authApi from "../../../services/authApi";
+import {PhotoCamera} from "@mui/icons-material";
 
 export default function Sidebar() {
     const navigate = useNavigate();
@@ -20,6 +21,11 @@ export default function Sidebar() {
     return (
         <div className="admin-left-menu">
             <div className="admin-left-menu-item">
+                <Link to={"/"}>
+                    <div className={'admin-left-menu-item-title'}>
+                        <HomeIcon /> Retour au site
+                    </div>
+                </Link>
                 <Link to={"/admin"}>
                     <div className={'admin-left-menu-item-title'}>
                         <DashboardIcon /> Tableau de bord
@@ -50,9 +56,9 @@ export default function Sidebar() {
                         <LocalShippingIcon /> Transporteurs
                     </div>
                 </Link>
-                <Link to={"/admin/page-accueil"}>
+                <Link to={"/admin/carousel"}>
                     <div className={'admin-left-menu-item-title'}>
-                        <HomeIcon /> Page d'accueil
+                        <PhotoCamera /> Carousel
                     </div>
                 </Link>
                 <div className={'admin-left-menu-item-title'} onClick={handleLogout}>

@@ -30,6 +30,9 @@ import EditOrder from "./pages/admin/order/edit/EditOrder";
 import CarrierDashboard from "./pages/admin/carrier/carrierDashboard/CarrierDashboard";
 import CreateCarrier from "./pages/admin/carrier/create/CreateCarrier";
 import EditCarrier from "./pages/admin/carrier/edit/EditCarrier";
+import CarouselDashboard from "./pages/admin/carousel/carouselDashboard/CarouselDashboard";
+import CreateCarousel from "./pages/admin/carousel/create/CreateCarousel";
+import EditCarousel from "./pages/admin/carousel/edit/EditCarousel";
 
 function App() {
     const [products, setProducts] = useState([]);
@@ -161,6 +164,21 @@ function App() {
                         <Route path='/admin/transporteurs/modification/:id' element={
                             <AdminRoute>
                                 <EditCarrier />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/carousel' element={
+                            <AdminRoute>
+                                <CarouselDashboard />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/carousel/ajout' element={
+                            <AdminRoute>
+                                <CreateCarousel />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/carousel/modification/:id' element={
+                            <AdminRoute>
+                                <EditCarousel />
                             </AdminRoute>
                         } />
                     </Routes>
