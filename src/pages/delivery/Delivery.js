@@ -8,7 +8,6 @@ import authApi from "../../services/authApi";
 import orderApi from "../../services/orderApi";
 import cartContext from "../../contexts/CartContext";
 import orderDetailApi from "../../services/orderDetailApi";
-import axios from "axios";
 import paymentApi from "../../services/paymentApi";
 
 export default function Delivery () {

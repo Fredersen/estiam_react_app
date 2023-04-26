@@ -17,8 +17,7 @@ function productsForCheckout(products) {
                 unit_amount: product.price * 100,
                 product_data: {
                     name: product.name,
-                    description: product.description,
-                    images: [product.image]
+                    description: product.description
                 }
             },
             quantity: product.quantity,

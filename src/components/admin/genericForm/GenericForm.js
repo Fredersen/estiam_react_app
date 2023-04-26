@@ -72,15 +72,14 @@ export default function GenericForm({
             {Object.keys(initialValues).map((fieldName) => (
                 fieldName === "image" ? (
                     <Box key="image" sx={{ mb: 2 }}>
-                        <TextField
-                            name="image"
+                        <InputLabel className="custom-label">{fieldName}</InputLabel>
+                        <input
                             type="file"
+                            name="image"
                             onChange={handleImageChange}
-                            variant="outlined"
-                            fullWidth
-                            error={!!errors.image}
-                            helperText={errors.image || null}
+                            accept="image/*"
                         />
+                       <FormHelperText>{errors[fieldName] || null}</FormHelperText>
                     </Box>
                 ) : fieldName === "category" ? (
                     <Box key={fieldName} sx={{ mb: 2 }} className="form-field category-field">
