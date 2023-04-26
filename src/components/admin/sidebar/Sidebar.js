@@ -8,7 +8,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import HomeIcon from "@mui/icons-material/Home";
 import authApi from "../../../services/authApi";
-import {PhotoCamera} from "@mui/icons-material";
+import {FeaturedPlayList, PhotoCamera} from "@mui/icons-material";
 
 export default function Sidebar() {
     const navigate = useNavigate();
@@ -29,6 +29,11 @@ export default function Sidebar() {
                 <Link to={"/admin"}>
                     <div className={'admin-left-menu-item-title'}>
                         <DashboardIcon /> Tableau de bord
+                    </div>
+                </Link>
+                <Link to={"/admin/features"}>
+                    <div className={'admin-left-menu-item-title'}>
+                        <FeaturedPlayList /> Mises en avant
                     </div>
                 </Link>
                 <Link to={"/admin/produits"}>
