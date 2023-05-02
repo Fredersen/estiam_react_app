@@ -1,11 +1,11 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import orderApi from "../../../../services/orderApi";
-import TableComponent from "../../../../components/admin/table/TableComponent";
+import orderApi from "services/orderApi";
+import TableComponent from "components/admin/table/TableComponent";
 
 export default function OrderDashboard() {
     const [orders, setOrders] = useState([]);
@@ -47,10 +47,8 @@ export default function OrderDashboard() {
         action: handleEdit
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Commandes" />
             <TableComponent items={orders} columns={['_id', 'user', 'carrierName', 'carrierPrice', 'createdAt', 'address', 'state']} actions={[editAction, deleteAction]} />
-        </AdminLayout>
-    );
+   </>    );
 }

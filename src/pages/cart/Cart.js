@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import CartContext from "../../contexts/CartContext";
+import CartContext from "contexts/CartContext";
 import './Cart.css';
 import {Link} from "react-router-dom";
-import Title from "../../components/title/Title";
-import authApi from "../../services/authApi";
+import Title from "components/title/Title";
+import authApi from "services/authApi";
 
 export default function Cart({ showLogin, setShowLogin }) {
     const { cart, updateItemQuantity, removeItemFromCart } = useContext(CartContext);

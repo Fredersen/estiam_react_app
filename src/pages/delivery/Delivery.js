@@ -1,14 +1,14 @@
 import './Delivery.css';
-import Title from "../../components/title/Title";
+import Title from "components/title/Title";
 import {MdDone} from 'react-icons/md';
 import {useContext, useEffect, useState} from "react";
-import carrierApi from "../../services/carrierApi";
-import addressApi from "../../services/addressApi";
-import authApi from "../../services/authApi";
-import orderApi from "../../services/orderApi";
-import cartContext from "../../contexts/CartContext";
-import orderDetailApi from "../../services/orderDetailApi";
-import paymentApi from "../../services/paymentApi";
+import carrierApi from "services/carrierApi";
+import addressApi from "services/addressApi";
+import authApi from "services/authApi";
+import orderApi from "services/orderApi";
+import cartContext from "contexts/CartContext";
+import orderDetailApi from "services/orderDetailApi";
+import paymentApi from "services/paymentApi";
 
 export default function Delivery () {
     const [carriers, setCarriers] = useState([]);

@@ -1,9 +1,9 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import carrierApi from "../../../../services/carrierApi";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
+import carrierApi from "services/carrierApi";
+import GenericForm from "components/admin/genericForm/GenericForm";
 
 export default function CreateCarrier() {
     const navigate = useNavigate();

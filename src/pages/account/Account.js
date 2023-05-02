@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import userApi from "../../services/userApi";
-import authApi from "../../services/authApi";
-import Title from "../../components/title/Title";
+import userApi from "services/userApi";
+import authApi from "services/authApi";
+import Title from "components/title/Title";
 import './Account.css';
 
 export default function Account() {

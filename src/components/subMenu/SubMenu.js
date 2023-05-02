@@ -1,8 +1,8 @@
 import './SubMenu.css';
 import {Link, useNavigate} from "react-router-dom";
 import {useEffect, useRef, useState} from "react";
-import orderApi from "../../services/orderApi";
-import authApi from "../../services/authApi";
+import orderApi from "services/orderApi";
+import authApi from "services/authApi";
 
 export default function SubMenu({ setShowSubMenu }) {
     const [showOrder, setShowOrder] = useState(false);

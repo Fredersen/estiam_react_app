@@ -1,9 +1,9 @@
-import carouselApi from "../../../../services/carouselApi";
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
+import carouselApi from "services/carouselApi";
+import AdminLayout from "components/layout/AdminLayout";
+import GenericForm from "components/admin/genericForm/GenericForm";
 import {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
-import Title from "../../../../components/title/Title";
+import Title from "components/title/Title";
 
 export default function EditCarousel() {
     const navigate = useNavigate();
@@ -46,8 +46,7 @@ export default function EditCarousel() {
         }
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Modifier une image du carousel" />
             <GenericForm
                 initialValues={initialValues}
@@ -55,6 +54,5 @@ export default function EditCarousel() {
                 onSubmit={onSubmit}
                 submitLabel="Modifier"
             />
-        </AdminLayout>
-    );
+   </>    );
 }

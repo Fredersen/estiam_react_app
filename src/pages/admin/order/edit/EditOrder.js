@@ -1,9 +1,9 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import orderApi from "../../../../services/orderApi";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
+import orderApi from "services/orderApi";
+import GenericForm from "components/admin/genericForm/GenericForm";
 
 export default function EditOrder() {
     const navigate = useNavigate();
@@ -37,8 +37,7 @@ export default function EditOrder() {
         }
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Modification d'une commande" />
             <GenericForm initialValues={{
                 state: order.state
@@ -47,6 +46,5 @@ export default function EditOrder() {
             onSubmit={onSubmit}
             submitLabel="Modifier"
             />
-        </AdminLayout>
-    );
+   </>    );
 }

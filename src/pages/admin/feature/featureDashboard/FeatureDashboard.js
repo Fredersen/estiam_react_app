@@ -1,10 +1,10 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
-import CreateButton from "../../../../components/admin/createButton/CreateButton";
-import TableComponent from "../../../../components/admin/table/TableComponent";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
+import CreateButton from "components/admin/createButton/CreateButton";
+import TableComponent from "components/admin/table/TableComponent";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import featuredProductApi from "../../../../services/featuredProductApi";
+import featuredProductApi from "services/featuredProductApi";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -48,13 +48,12 @@ export default function FeatureDashboard() {
         action: handleEdit
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Mises en avant" />
             <div className="button-container">
                 <CreateButton label="Créer une mise en avant" link="/admin/features/ajout" />
             </div>
             <TableComponent items={features} columns={['_id', 'name']} actions={[editAction, deleteAction]} />
-        </AdminLayout>
+            </>
     )
 }

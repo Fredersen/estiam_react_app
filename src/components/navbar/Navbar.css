@@ -57,7 +57,7 @@
     color: #333;
 }
 
-@import url('../../style.css');
+@import url('style.css');
 
 .nav-category {
     background-color: rgba(51, 51, 51, 0.3);

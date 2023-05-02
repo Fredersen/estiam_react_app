@@ -1,8 +1,8 @@
 import {useNavigate} from "react-router-dom";
-import FeaturedProductApi from "../../../../services/featuredProductApi";
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
-import Title from "../../../../components/title/Title";
+import FeaturedProductApi from "services/featuredProductApi";
+import AdminLayout from "components/layout/AdminLayout";
+import GenericForm from "components/admin/genericForm/GenericForm";
+import Title from "components/title/Title";
 
 export default function CreateFeature() {
     const navigate = useNavigate();
@@ -28,8 +28,7 @@ export default function CreateFeature() {
         }
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Création d'une mise en avant" />
             <GenericForm
                 initialValues={{name: ''}}
@@ -37,6 +36,6 @@ export default function CreateFeature() {
                 onSubmit={onSubmit}
                 submitLabel="Créer"
             />
-        </AdminLayout>
+      </>
     )
 }

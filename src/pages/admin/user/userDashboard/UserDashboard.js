@@ -1,11 +1,11 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import userApi from "../../../../services/userApi";
-import TableComponent from "../../../../components/admin/table/TableComponent";
+import userApi from "services/userApi";
+import TableComponent from "components/admin/table/TableComponent";
 
 export default function UserDashboard() {
     const [users, setUsers] = useState([]);
@@ -47,10 +47,8 @@ export default function UserDashboard() {
         action: handleEdit
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Utilisateurs" />
             <TableComponent items={users} columns={['firstname', 'lastname', 'email', 'role']} actions={[editAction, deleteAction]} />
-        </AdminLayout>
-    );
+   </>    );
 }

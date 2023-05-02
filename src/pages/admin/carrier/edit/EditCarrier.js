@@ -1,13 +1,13 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
-import {useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import carrierApi from "../../../../services/carrierApi";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import carrierApi from "services/carrierApi";
+import GenericForm from "components/admin/genericForm/GenericForm";
 
 export default function EditCarrier() {
     const navigate = useNavigate();
-    const {id} = useParams();
+    const { id } = useParams();
     const [carrier, setCarrier] = useState([]);
 
     const fetchCarrier = async () => {
@@ -58,19 +58,18 @@ export default function EditCarrier() {
         }
     }
 
-    return (
-        <AdminLayout>
-            <Title title="Modification d'un transporteur" />
-            <GenericForm
-                initialValues={{
-                    name: carrier.name,
-                    description: carrier.description,
-                    price: carrier.price
-                }}
-                validationSchema={validationSchema}
-                onSubmit={onSubmit}
-                submitLabel="Modifier"
-            />
-        </AdminLayout>
+    return (<>
+        <Title title="Modification d'un transporteur" />
+        <GenericForm
+            initialValues={{
+                name: carrier.name,
+                description: carrier.description,
+                price: carrier.price
+            }}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+            submitLabel="Modifier"
+        />
+    </>
     )
 }

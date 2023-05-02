@@ -1,8 +1,8 @@
 import {useNavigate} from "react-router-dom";
-import CategoryApi from "../../../../services/categoryApi";
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
+import CategoryApi from "services/categoryApi";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
+import GenericForm from "components/admin/genericForm/GenericForm";
 
 export default function CreateCategory() {
     const navigate = useNavigate();
@@ -28,8 +28,7 @@ export default function CreateCategory() {
         }
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Création d'une catégorie" />
             <GenericForm
                 initialValues={{name: ''}}
@@ -37,6 +36,6 @@ export default function CreateCategory() {
                 onSubmit={onSubmit}
                 submitLabel="Créer"
             />
-        </AdminLayout>
+            </>
     )
 }

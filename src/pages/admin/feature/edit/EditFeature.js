@@ -1,9 +1,9 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import featuredProductApi from "../../../../services/featuredProductApi";
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
+import featuredProductApi from "services/featuredProductApi";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
+import GenericForm from "components/admin/genericForm/GenericForm";
 
 export default function EditFeature() {
     const navigate = useNavigate();
@@ -39,8 +39,7 @@ export default function EditFeature() {
         }
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Modification d'une mise en avant" />
             <GenericForm
                 initialValues={{name: feature.name}}
@@ -48,6 +47,6 @@ export default function EditFeature() {
                 onSubmit={onSubmit}
                 submitLabel="Modifier"
             />
-        </AdminLayout>
+      </>
     )
 }

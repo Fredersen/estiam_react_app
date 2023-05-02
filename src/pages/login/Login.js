@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css';
-import authApi from "../../services/authApi";
+import authApi from "services/authApi";
 
 export default function Login({setShowRegister, toggleLogin}) {
     const [email, setEmail] = useState('');

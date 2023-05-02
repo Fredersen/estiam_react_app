@@ -1,8 +1,8 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
-import productApi from "../../../../services/productApi";
-import categoryApi from "../../../../services/categoryApi";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
+import GenericForm from "components/admin/genericForm/GenericForm";
+import productApi from "services/productApi";
+import categoryApi from "services/categoryApi";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -91,8 +91,7 @@ export default function CreateProduct() {
         }
     };
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Création de produit" />
             <GenericForm
                 initialValues={initialValues}
@@ -101,6 +100,5 @@ export default function CreateProduct() {
                 fetchOptions={categories}
                 submitLabel="Créer"
             />
-        </AdminLayout>
-    );
+   </>    );
 }

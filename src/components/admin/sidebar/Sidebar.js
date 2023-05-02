@@ -7,7 +7,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PeopleIcon from "@mui/icons-material/People";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import HomeIcon from "@mui/icons-material/Home";
-import authApi from "../../../services/authApi";
+import authApi from "services/authApi";
 import {FeaturedPlayList, PhotoCamera} from "@mui/icons-material";
 
 export default function Sidebar() {

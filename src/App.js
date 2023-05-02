@@ -1,41 +1,13 @@
-import { Routes, Route, BrowserRouter, Outlet } from "react-router-dom";
-import './App.css';
-import Navbar from "./components/navbar/Navbar";
-import Home from "./pages/home/Home";
-import Footer from "./components/footer/Footer";
-import Product from "./pages/product/Product";
-import ProductItem from "./pages/productItem/ProductItem";
-import { useState, useEffect} from "react";
-import {CartContextProvider} from "./contexts/CartContext";
-import Cart from "./pages/cart/Cart";
-import Delivery from "./pages/delivery/Delivery";
-import productApi from "./services/productApi";
-import OrderSuccess from "./pages/order/OrderSuccess";
-import Account from "./pages/account/Account";
-import MyOrder from "./pages/myOrder/MyOrder";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Layout } from "./Layout";
 import ProtectedRoute from "./components/routes/ProtectedRoute";
-import AdminDashboard from "./pages/admin/adminDashboard/AdminDashboard";
-import authApi from "./services/authApi";
-import AdminRoute from "./components/routes/AdminRoute";
-import ProductDashboard from "./pages/admin/product/productDashboard/ProductDashboard";
-import CreateProduct from "./pages/admin/product/create/CreateProduct";
-import EditProduct from "./pages/admin/product/edit/EditProduct";
-import CategoryDashboard from "./pages/admin/category/categoryDashboard/CategoryDashboard";
-import CreateCategory from "./pages/admin/category/create/CreateCategory";
-import EditCategory from "./pages/admin/category/edit/EditCategory";
-import UserDashboard from "./pages/admin/user/userDashboard/UserDashboard";
-import EditUser from "./pages/admin/user/edit/EditUser";
-import OrderDashboard from "./pages/admin/order/orderDashboard/OrderDashboard";
-import EditOrder from "./pages/admin/order/edit/EditOrder";
-import CarrierDashboard from "./pages/admin/carrier/carrierDashboard/CarrierDashboard";
-import CreateCarrier from "./pages/admin/carrier/create/CreateCarrier";
-import EditCarrier from "./pages/admin/carrier/edit/EditCarrier";
-import CarouselDashboard from "./pages/admin/carousel/carouselDashboard/CarouselDashboard";
-import CreateCarousel from "./pages/admin/carousel/create/CreateCarousel";
-import EditCarousel from "./pages/admin/carousel/edit/EditCarousel";
-import FeatureDashboard from "./pages/admin/feature/featureDashboard/FeatureDashboard";
-import CreateFeature from "./pages/admin/feature/create/CreateFeature";
-import EditFeature from "./pages/admin/feature/edit/EditFeature";
+import { CartContextProvider } from "./contexts/CartContext";
+import {
+    Account, AdminDashboard, CarouselDashboard, CreateCarousel, EditCarousel, CarrierDashboard, CreateCarrier, EditCarrier, CategoryDashboard, CreateCategory, EditCategory, CreateFeature, EditFeature, FeatureDashboard, EditOrder, OrderDashboard, CreateProduct, EditProduct, ProductDashboard, EditUser, UserDashboard, Cart, Delivery, Home, MyOrder, OrderSuccess, Product, ProductItem
+} from "pages"
+import { authApi, productApi } from "services"
+import AdminLayout from "components/layout/AdminLayout";
 
 function App() {
     const [products, setProducts] = useState([]);
@@ -57,6 +29,7 @@ function App() {
         fetchData()
     }, []);
 
+
     function handleSearch(search) {
         console.log(search);
         if (search !== '') {
@@ -67,143 +40,57 @@ function App() {
         }
     }
 
+    const NoMatch = () => {
+        return (<>404</>)
+    }
+
     return (
-        <BrowserRouter>
-            <CartContextProvider>
-                <div className="App">
-                    <header className="App-header">
-                        <Navbar handleSearch={handleSearch} showLogin={showLogin} setShowLogin={setShowLogin} />
-                    </header>
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path='/:slug' element={<Product filteredProduct={filteredProduct} />} />
-                        <Route path='/produits/:id' element={<ProductItem />} />
-                        <Route path='/panier' element={<Cart showLogin={showLogin} setShowLogin={setShowLogin} />} />
-                        <Route path ='/livraison' element={
-                            <ProtectedRoute>
-                                <Delivery />
-                            </ProtectedRoute>
-                        } />
-                        <Route path='/commande/merci/:id' element={
-                            <ProtectedRoute>
-                                <OrderSuccess />
-                            </ProtectedRoute>
-                        } />
-                        <Route path='/mon-compte' element={
-                            <ProtectedRoute>
-                                <Account />
-                            </ProtectedRoute>
-                        } />
-                        <Route path='/mes-commandes' element={
-                            <ProtectedRoute>
-                                <MyOrder />
-                            </ProtectedRoute>
-                        } />
-                        <Route path='/admin' element={
-                            <AdminRoute>
-                                <AdminDashboard />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/produits' element={
-                            <AdminRoute>
-                                <ProductDashboard />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/produits/ajout' element={
-                            <AdminRoute>
-                                <CreateProduct />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/produits/modification/:id' element={
-                            <AdminRoute>
-                                <EditProduct />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/categories' element={
-                            <AdminRoute>
-                                <CategoryDashboard />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/categories/ajout' element={
-                            <AdminRoute>
-                                <CreateCategory />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/categories/modification/:id' element={
-                            <AdminRoute>
-                                <EditCategory />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/utilisateurs' element={
-                            <AdminRoute>
-                                <UserDashboard />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/utilisateurs/modification/:id' element={
-                            <AdminRoute>
-                                <EditUser />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/commandes' element={
-                            <AdminRoute>
-                                <OrderDashboard />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/commandes/modification/:id' element={
-                            <AdminRoute>
-                                <EditOrder />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/transporteurs' element={
-                            <AdminRoute>
-                                <CarrierDashboard />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/transporteurs/ajout' element={
-                            <AdminRoute>
-                                <CreateCarrier />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/transporteurs/modification/:id' element={
-                            <AdminRoute>
-                                <EditCarrier />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/carousel' element={
-                            <AdminRoute>
-                                <CarouselDashboard />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/carousel/ajout' element={
-                            <AdminRoute>
-                                <CreateCarousel />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/carousel/modification/:id' element={
-                            <AdminRoute>
-                                <EditCarousel />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/features' element={
-                            <AdminRoute>
-                                <FeatureDashboard />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/features/ajout' element={
-                            <AdminRoute>
-                                <CreateFeature />
-                            </AdminRoute>
-                        } />
-                        <Route path='/admin/features/modification/:id' element={
-                            <AdminRoute>
-                                <EditFeature />
-                            </AdminRoute>
-                        } />
-                    </Routes>
-                    <Footer />
-                </div>
-            </CartContextProvider>
-        </BrowserRouter>
+        <CartContextProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route errorElement={<NoMatch />} element={<Layout handleSearch={handleSearch} showLogin={showLogin} setShowLogin={setShowLogin} />} path="/"  >
+                        <Route index element={<Home />} />
+
+                        <Route element={<ProtectedRoute />}>
+                            <Route path=':slug' element={<Product filteredProduct={filteredProduct} />} />
+                            <Route path='produits/:id' element={<ProductItem />} />
+                            <Route path='panier' element={<Cart showLogin={showLogin} setShowLogin={setShowLogin} />} />
+                            <Route path='livraison' element={<Delivery />} />
+                            <Route path='commande/merci/:id' element={<OrderSuccess />} />
+                            <Route path='mon-compte' element={<Account />} />
+                            <Route path='mes-commandes' element={<MyOrder />} />
+                        </Route>
+                        <Route path="*" element={<NoMatch />} />
+                    </Route>
+
+                    <Route errorElement={<NoMatch />} element={<AdminLayout />} path="/admin"  >
+                        <Route path="" element={<ProtectedRoute allowedRole={"admin"} />}>
+                            <Route path='produits' element={<ProductDashboard />} />
+                            <Route path='produits/ajout' element={<CreateProduct />} />
+                            <Route path='produits/modification/:id' element={<EditProduct />} />
+                            <Route path='categories' element={<CategoryDashboard />} />
+                            <Route path='categories/ajout' element={<CreateCategory />} />
+                            <Route path='categories/modification/:id' element={<EditCategory />} />
+                            <Route path='utilisateurs' element={<UserDashboard />} />
+                            <Route path='utilisateurs/modification/:id' element={<EditUser />} />
+                            <Route path='commandes' element={<OrderDashboard />} />
+                            <Route path='commandes/modification/:id' element={<EditOrder />} />
+                            <Route path='transporteurs' element={<CarrierDashboard />} />
+                            <Route path='transporteurs/ajout' element={<CreateCarrier />} />
+                            <Route path='transporteurs/modification/:id' element={<EditCarrier />} />
+                            <Route path='carousel' element={<CarouselDashboard />} />
+                            <Route path='carousel/ajout' element={<CreateCarousel />} />
+                            <Route path='carousel/modification/:id' element={<EditCarousel />} />
+                            <Route path='features' element={<FeatureDashboard />} />
+                            <Route path='features/ajout' element={<CreateFeature />} />
+                            <Route path='features/modification/:id' element={<EditFeature />} />
+                        </Route>
+                        <Route path="*" element={<NoMatch />} />
+                    </Route>
+
+                </Routes>
+            </BrowserRouter>
+        </CartContextProvider >
     );
 }
 

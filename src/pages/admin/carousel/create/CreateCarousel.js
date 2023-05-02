@@ -1,9 +1,9 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import carouselApi from "../../../../services/carouselApi";
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
+import carouselApi from "services/carouselApi";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
+import GenericForm from "components/admin/genericForm/GenericForm";
 
 export default function CreateCarousel() {
     const [carousel, setCarousel] = useState([]);
@@ -34,8 +34,7 @@ export default function CreateCarousel() {
         }
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Ajouter une image au carousel" />
             <GenericForm
                 initialValues={initialValues}
@@ -43,6 +42,5 @@ export default function CreateCarousel() {
                 onSubmit={onSubmit}
                 submitLabel="Créer"
             />
-        </AdminLayout>
-    );
+   </>    );
 }
