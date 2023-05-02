@@ -13,13 +13,13 @@ import {
 } from "@mui/material";
 
 export default function GenericForm({
-                                        initialValues = {},
-                                        validationSchema,
-                                        onSubmit,
-                                        submitLabel,
-                                        title,
-                                        fetchOptions
-                                    }) {
+    initialValues = {},
+    validationSchema,
+    onSubmit,
+    submitLabel,
+    title,
+    fetchOptions
+}) {
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState({});
 
@@ -79,7 +79,7 @@ export default function GenericForm({
                             onChange={handleImageChange}
                             accept="image/*"
                         />
-                       <FormHelperText>{errors[fieldName] || null}</FormHelperText>
+                        <FormHelperText>{errors[fieldName] || null}</FormHelperText>
                     </Box>
                 ) : fieldName === "category" ? (
                     <Box key={fieldName} sx={{ mb: 2 }} className="form-field category-field">
