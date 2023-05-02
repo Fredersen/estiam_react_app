@@ -50,7 +50,6 @@ function App() {
                 <Routes>
                     <Route errorElement={<NoMatch />} element={<Layout handleSearch={handleSearch} showLogin={showLogin} setShowLogin={setShowLogin} />} path="/"  >
                         <Route index element={<Home />} />
-
                         <Route element={<ProtectedRoute />}>
                             <Route path=':slug' element={<Product filteredProduct={filteredProduct} />} />
                             <Route path='produits/:id' element={<ProductItem />} />
@@ -60,11 +59,11 @@ function App() {
                             <Route path='mon-compte' element={<Account />} />
                             <Route path='mes-commandes' element={<MyOrder />} />
                         </Route>
-                        <Route path="*" element={<NoMatch />} />
                     </Route>
 
-                    <Route errorElement={<NoMatch />} element={<AdminLayout />} path="/admin"  >
-                        <Route path="" element={<ProtectedRoute allowedRole={"admin"} />}>
+                    <Route errorElement={<NoMatch />} element={<ProtectedRoute allowedRole={"admin"} />} path="/admin"  >
+                        <Route path="" element={<AdminLayout />}>
+                            <Route index element={<AdminDashboard/>}/>
                             <Route path='produits' element={<ProductDashboard />} />
                             <Route path='produits/ajout' element={<CreateProduct />} />
                             <Route path='produits/modification/:id' element={<EditProduct />} />
@@ -85,9 +84,8 @@ function App() {
                             <Route path='features/ajout' element={<CreateFeature />} />
                             <Route path='features/modification/:id' element={<EditFeature />} />
                         </Route>
-                        <Route path="*" element={<NoMatch />} />
                     </Route>
-
+                    <Route path="*" element={<NoMatch />} />
                 </Routes>
             </BrowserRouter>
         </CartContextProvider >
