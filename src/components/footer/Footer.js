@@ -5,7 +5,9 @@ export default function Footer () {
         <footer className="footer">
             <div className="footer-up">
                 <h2>À propos</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquet nunc, eget aliquam nisl nisl sit amet lorem. Sed euismod, nisl vel tincidunt luctus, nunc nisl aliquet nunc, eget aliquam nisl nisl sit amet lorem.</p>
+                <p>Depuis plus de 37 ans, nous mettons au cœur de notre travail l'amour du bijou et la satisfaction de nos clients.
+
+                    Au-delà d’un bijou, nous vous offrons également un haut niveau de service combiné à une expérience client inégalée.</p>
             </div>
             <div className="footer-down">
                 <div className="footer-left">
