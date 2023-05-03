@@ -36,6 +36,7 @@ import EditCarousel from "./pages/admin/carousel/edit/EditCarousel";
 import FeatureDashboard from "./pages/admin/feature/featureDashboard/FeatureDashboard";
 import CreateFeature from "./pages/admin/feature/create/CreateFeature";
 import EditFeature from "./pages/admin/feature/edit/EditFeature";
+import AddFeatureProduct from "./pages/admin/feature/addProduct/AddFeatureProduct";
 
 function App() {
     const [products, setProducts] = useState([]);
@@ -197,6 +198,11 @@ function App() {
                         <Route path='/admin/features/modification/:id' element={
                             <AdminRoute>
                                 <EditFeature />
+                            </AdminRoute>
+                        } />
+                        <Route path='/admin/features/:id/add-product' element={
+                            <AdminRoute>
+                                <AddFeatureProduct />
                             </AdminRoute>
                         } />
                     </Routes>
