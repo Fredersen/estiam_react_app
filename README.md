@@ -1,12 +1,9 @@
 # React Ecommerce App
 
-## Github Repository
-
-The github repository of the project is :
-
-### `git clone git@github.com:Fredersen/estiam_react_app.git`
-
 ## Installation
+
+First, start by cloning the repository :
+### `git clone git@github.com:Fredersen/estiam_react_app.git`
 
 To install the project you must install the dependances with :
 ### `npm install`
