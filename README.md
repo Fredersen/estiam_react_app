@@ -18,4 +18,4 @@ You can launch the project with the command :
 ## Backend
 
 To use this application you must clone and install the backend part :
-### `git clone git@github.com:Fredersen/estiam_react_app_back.git
+### `git clone git@github.com:Fredersen/estiam_react_app_back.git`
