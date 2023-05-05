@@ -27,7 +27,7 @@ To use this application you must clone and install the backend part :
 
 ### Admin section
 
-If you want to connect to the admin panil you must be logged with the following credentials :
+If you want to connect to the admin panel you must be logged with the following credentials :
 ### `username: admin@admin.com`
 ### `password: admin`
 
