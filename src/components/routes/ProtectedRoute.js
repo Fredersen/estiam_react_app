@@ -7,7 +7,6 @@ export default function ProtectedRoute({ allowedRole }) {
         return <Navigate to={'/'} replace />
 
     const role = authApi.retrieveRole();
-    console.log(allowedRole,role);
     if (allowedRole && role !== allowedRole)
         return (<>pas admin</>);
 
