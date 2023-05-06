@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import CartContext from "contexts/CartContext";
 import './Cart.css';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Title from "components/title/Title";
 import authApi from "services/authApi";
 
@@ -88,17 +88,17 @@ export default function Cart({ showLogin, setShowLogin }) {
                         </div>
                         <div className="order-details-total-price">
                             <span className="order-details-total-price-label">Total</span>
-                            <span className="order-details-total-price-value">{ totalPriceAndDelivery }</span>
+                            <span className="order-details-total-price-value">{totalPriceAndDelivery}</span>
                         </div>
-                        {authApi.isAuthenticated() ? (
-                            <Link to={'/livraison'}>
-                                <button className="order-details-button">Passer la commande</button>
-                            </Link>
-                        ) : (
-                            <div className="order-details-button-container">
+                        <div className="order-details-button-container flex justify-center">
+                            {authApi.isAuthenticated() ? (
+                                <Link to={'/livraison'} >
+                                    <button className="order-details-button">Passer la commande</button>
+                                </Link>
+                            ) : (
                                 <button className="order-details-button" onClick={() => setShowLogin(true)}>Passer la commande</button>
-                            </div>
-                        )}
+                            )}
+                        </div>
                     </div>
                 </div>
             ) : (
