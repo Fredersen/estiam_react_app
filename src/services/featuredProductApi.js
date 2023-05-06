@@ -32,10 +32,24 @@ function deleteFeaturedProduct(id) {
         .then(response => response.data.data);
 }
 
+function addProductToFeaturedProduct(id, productId) {
+    return axios
+        .patch(apiBaseUrl + "/api/featured-products/add-product/" + id + "/" + productId)
+        .then(response => response.data.data);
+}
+
+function deleteProductFromFeaturedProduct(id, productId) {
+    return axios
+        .patch(apiBaseUrl + "/api/featured-products/remove-product/" + id + "/" + productId)
+        .then(response => response.data.data);
+}
+
 export default {
     findAll,
     find,
     create,
     update,
-    delete: deleteFeaturedProduct
+    delete: deleteFeaturedProduct,
+    deleteProductFromFeaturedProduct,
+    addProductToFeaturedProduct
 }

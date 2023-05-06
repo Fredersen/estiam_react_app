@@ -13,6 +13,7 @@ import CreateButton from "components/admin/createButton/CreateButton";
 export default function ProductDashboard() {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [preparedProducts, setPreparedProducts] = useState([]);
     const navigate = useNavigate();
 
     const fetchProducts = async () => {
@@ -25,22 +26,25 @@ export default function ProductDashboard() {
     }
 
     const prepareProducts = () => {
-        return products.map(product => ({
-            ...product,
-            category: categories.find(category => category._id === product.category).name,
-        }));
+        return products.map(product => {
+            const category = categories.find(category => category._id === product.category);
+            return {
+                ...product,
+                category: category ? category.name : '',
+            };
+        });
     }
 
     useEffect(() => {
         fetchProducts();
         fetchCategories();
-
     }, []);
 
 
     useEffect(() => {
-        setProducts(prepareProducts());
-    }, [categories]);
+        setPreparedProducts(prepareProducts());
+    }, [categories, products]);
+
 
 
     const handleDelete = async (id) => {
@@ -69,13 +73,13 @@ export default function ProductDashboard() {
         color: 'primary',
         action: handleEdit
     }
-
+    
     return (<>
-        <Title title="Produits" />
-        <div className="button-container">
-            <CreateButton label="Créer un produit" link="/admin/produits/ajout" />
-        </div>
-        <TableComponent items={products} columns={['name', 'description', 'price', 'image', 'category']} actions={[editAction, deleteAction]} />
-    </>
+           <Title title="Produits" />
+            <div className="button-container">
+                <CreateButton label="Créer un produit" link="/admin/produits/ajout" />
+            </div>
+            <TableComponent items={preparedProducts} columns={['name', 'description', 'price', 'image', 'category']} actions={[editAction, deleteAction]} />
+       </>
     )
 }

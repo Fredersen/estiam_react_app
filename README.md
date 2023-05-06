@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# React Ecommerce App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Production url
+You can find the production site here :
+https://estiam-ecommerce-front.onrender.com/
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+First, start by cloning the repository :
+### `git clone git@github.com:Fredersen/estiam_react_app.git`
+
+To install the project you must install the dependances with :
+### `npm install`
+
+You can must rename the file .env.dist in .env and add the url your backend.
+
+You can launch the project with the command :
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Backend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To use this application you must clone and install the backend part :
+### `git clone git@github.com:Fredersen/estiam_react_app_back.git`
 
-### `npm test`
+## How to use the application
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Admin section
 
-### `npm run build`
+If you want to connect to the admin panel you must be logged with the following credentials :
+### `username: admin@admin.com`
+### `password: admin`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Once connected with the admin role you can connect to the admin panel at this url :
+https://estiam-ecommerce-front.onrender.com/admin
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Payment card for testing purpose
+To test the order process you can use the this testing card :
+### `card number : 4242 4242 4242 4242`
+### `expiration date : enter andy date after the date of the day`
+### `cvc : enter 3 random numbers`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
