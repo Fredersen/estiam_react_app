@@ -51,12 +51,12 @@ function App() {
                 <Routes>
                     <Route errorElement={<NoMatch />} element={<Layout handleSearch={handleSearch} showLogin={showLogin} setShowLogin={setShowLogin} />} path="/"  >
                         <Route index element={<Home />} />
-                        <Route element={<ProtectedRoute />}>
                             <Route path=':slug' element={<Product filteredProduct={filteredProduct} />} />
                             <Route path='produits/:id' element={<ProductItem />} />
                             <Route path='panier' element={<Cart showLogin={showLogin} setShowLogin={setShowLogin} />} />
                             <Route path='livraison' element={<Delivery />} />
                             <Route path='commande/merci/:id' element={<OrderSuccess />} />
+                        <Route element={<ProtectedRoute />}>
                             <Route path='mon-compte' element={<Account />} />
                             <Route path='mes-commandes' element={<MyOrder />} />
                         </Route>
