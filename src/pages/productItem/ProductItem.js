@@ -1,7 +1,7 @@
 import './ProductItem.css'
 import Title from "components/title/Title";
-import {useState, useContext, useEffect } from "react";
-import {useParams} from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import CartContext from "contexts/CartContext";
 import productApi from "services/productApi";
 import Loading from "components/loading/Loading";
@@ -38,22 +38,23 @@ export default function ProductItem() {
         <div className="container product-item-container">
             <Title title={product.name} />
             {isLoading ? (
-                <Loading />) : (    <div className="product-item">
-                <div className="product-item-image">
-                    <img src={product.image} alt="image" />
-                </div>
-                <div className="product-item-content">
-                    <h2>{product.name}</h2>
-                    <p>{product.description}</p>
-                    <p>{product.price} €</p>
-                    <select name="quantity" id="quantity" value={quantity} onChange={handleQuantityChange}>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                    <button onClick={handleAddToCart}>Ajouter au panier</button>
-                </div>
-            </div>)}
+                <Loading />) : (
+                <div className="product-item flex-col md:flex-row">
+                    <div className="product-item-image">
+                        <img src={product.image} alt="image" />
+                    </div>
+                    <div className="product-item-content">
+                        <h2>{product.name}</h2>
+                        <p>{product.description}</p>
+                        <p>{product.price} €</p>
+                        <select name="quantity" id="quantity" value={quantity} onChange={handleQuantityChange}>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <button onClick={handleAddToCart}>Ajouter au panier</button>
+                    </div>
+                </div>)}
         </div>
     );
 }
