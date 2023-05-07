@@ -1,10 +1,10 @@
 import './ProductItem.css'
-import Title from "../../components/title/Title";
+import Title from "components/title/Title";
 import {useState, useContext, useEffect } from "react";
 import {useParams} from "react-router-dom";
-import CartContext from "../../contexts/CartContext";
-import productApi from "../../services/productApi";
-import Loading from "../../components/loading/Loading";
+import CartContext from "contexts/CartContext";
+import productApi from "services/productApi";
+import Loading from "components/loading/Loading";
 
 export default function ProductItem() {
     const { id } = useParams();

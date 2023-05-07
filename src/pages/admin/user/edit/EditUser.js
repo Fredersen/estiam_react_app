@@ -1,9 +1,9 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import userApi from "../../../../services/userApi";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
+import userApi from "services/userApi";
+import GenericForm from "components/admin/genericForm/GenericForm";
 
 export default function EditUser() {
     const navigate = useNavigate();
@@ -73,8 +73,7 @@ export default function EditUser() {
         }
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Modification d'un utilisateur" />
             <GenericForm
                 initialValues={{
@@ -87,6 +86,5 @@ export default function EditUser() {
                 onSubmit={onSubmit}
                 submitLabel="Modifier"
             />
-        </AdminLayout>
-    );
+   </>    );
 }

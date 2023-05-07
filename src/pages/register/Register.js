@@ -1,6 +1,6 @@
 import {useState} from "react";
 import "./Register.css";
-import userApi from "../../services/userApi";
+import userApi from "services/userApi";
 
 export default function Register({ setShowRegister}) {
     const [name, setName] = useState('');

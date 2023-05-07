@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
     --max-container: 1200px;
+}
+
+html,
+body,
+#root {
+    height: 100%;
 }

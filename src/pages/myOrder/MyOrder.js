@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Title from "../../components/title/Title";
-import orderApi from "../../services/orderApi";
-import authApi from "../../services/authApi";
+import Title from "components/title/Title";
+import orderApi from "services/orderApi";
+import authApi from "services/authApi";
 import './MyOrder.css';
-import OrderDetail from "../../components/orderDetail/OrderDetail";
+import OrderDetail from "components/orderDetail/OrderDetail";
 
 const ORDERS_PER_PAGE = 5;
 

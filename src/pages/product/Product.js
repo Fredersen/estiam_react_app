@@ -1,11 +1,11 @@
-import ProductCard from "../../components/productCard/ProductCard";
+import ProductCard from "components/productCard/ProductCard";
 import "./Product.css";
-import Title from "../../components/title/Title";
+import Title from "components/title/Title";
 import {useNavigate, useParams} from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import productApi from "../../services/productApi";
-import Loading from "../../components/loading/Loading";
-import categoryApi from "../../services/categoryApi";
+import productApi from "services/productApi";
+import Loading from "components/loading/Loading";
+import categoryApi from "services/categoryApi";
 
 export default function Product({ filteredProduct }) {
     const { slug } = useParams();

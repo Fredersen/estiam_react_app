@@ -57,7 +57,7 @@
     color: #333;
 }
 
-@import url('../../style.css');
+@import url('style.css');
 
 .nav-category {
     background-color: rgba(51, 51, 51, 0.3);
@@ -85,6 +85,7 @@
     background-color: #FF4136;
     color: #fff;
     border-radius: 50%;
+    font-weight: 500;
     width: 20px;
     height: 20px;
     font-size: 14px;

@@ -1,9 +1,8 @@
 import {Link, useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import featuredProductApi from "../../../../services/featuredProductApi";
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
+import featuredProductApi from "services/featuredProductApi";
+import Title from "components/title/Title";
+import GenericForm from "components/admin/genericForm/GenericForm";
 import productApi from "../../../../services/productApi";
 import DeleteIcon from '@mui/icons-material/Delete';
 import TableComponent from "../../../../components/admin/table/TableComponent";
@@ -64,8 +63,7 @@ export default function EditFeature() {
         action: handleDelete
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Modification d'une mise en avant" />
             <Link to={`/admin/features/${id}/add-product`}>
                 <Button variant="contained" color="primary" className="edit-feature-add-product-button">Ajouter des produits</Button>
@@ -76,6 +74,7 @@ export default function EditFeature() {
                 onSubmit={onSubmit}
                 submitLabel="Modifier"
             />
+      
             {products.length > 0 && (
                 <TableComponent
                     items={products}
@@ -83,7 +82,6 @@ export default function EditFeature() {
                     actions={[deleteAction]}
                 />
             )}
-        </AdminLayout>
-
+      </>
     )
 }

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Carousel.css';
-import carouselImage1 from '../../assets/carousel/Luxurious.webp';
-import carouselImage2 from '../../assets/carousel/Sans-titre.webp';
-import carouselImage3 from '../../assets/carousel/Sans-titre-_1_.webp';
-import carouselApi from "../../services/carouselApi";
+import carouselImage1 from 'assets/carousel/Luxurious.webp';
+import carouselImage2 from 'assets/carousel/Sans-titre.webp';
+import carouselImage3 from 'assets/carousel/Sans-titre-_1_.webp';
+import carouselApi from "services/carouselApi";
 
 function Carousel() {
     const [activeIndex, setActiveIndex] = useState(0);

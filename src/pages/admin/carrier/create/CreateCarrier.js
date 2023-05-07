@@ -1,9 +1,7 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
-import carrierApi from "../../../../services/carrierApi";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
+import GenericForm from "components/admin/genericForm/GenericForm";
+import Title from "components/title/Title";
+import { useNavigate } from "react-router-dom";
+import carrierApi from "services/carrierApi";
 
 export default function CreateCarrier() {
     const navigate = useNavigate();
@@ -53,8 +51,8 @@ export default function CreateCarrier() {
         }
     };
 
-    return(
-        <AdminLayout>
+    return (
+        <>
             <Title title="Création d'un transporteur" />
             <GenericForm
                 initialValues={initialValues}
@@ -62,6 +60,6 @@ export default function CreateCarrier() {
                 onSubmit={onSubmit}
                 submitLabel="Créer"
             />
-        </AdminLayout>
+        </>
     )
 }

@@ -1,12 +1,12 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import carouselApi from "../../../../services/carouselApi";
+import carouselApi from "services/carouselApi";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import CreateButton from "../../../../components/admin/createButton/CreateButton";
-import TableComponent from "../../../../components/admin/table/TableComponent";
+import CreateButton from "components/admin/createButton/CreateButton";
+import TableComponent from "components/admin/table/TableComponent";
 
 
 export default function CarouselDashboard() {
@@ -49,13 +49,11 @@ export default function CarouselDashboard() {
         action: handleEdit
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Carousel" />
             <div className="button-container">
                 <CreateButton label="Ajouter une image au carousel" link="/admin/carousel/ajout" />
             </div>
             <TableComponent items={carousels} columns={['_id', 'image']} actions={[deleteAction, editAction]} />
-        </AdminLayout>
-    );
+   </>    );
 }

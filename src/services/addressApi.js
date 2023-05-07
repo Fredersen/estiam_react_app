@@ -1,5 +1,4 @@
 import axios from "axios";
-import authApi from "./authApi";
 
 const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 

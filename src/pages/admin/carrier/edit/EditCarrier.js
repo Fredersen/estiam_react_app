@@ -1,13 +1,12 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
-import {useNavigate, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import carrierApi from "../../../../services/carrierApi";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
+import GenericForm from "components/admin/genericForm/GenericForm";
+import Title from "components/title/Title";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import carrierApi from "services/carrierApi";
 
 export default function EditCarrier() {
     const navigate = useNavigate();
-    const {id} = useParams();
+    const { id } = useParams();
     const [carrier, setCarrier] = useState([]);
 
     const fetchCarrier = async () => {
@@ -21,13 +20,12 @@ export default function EditCarrier() {
 
     const validationSchema = {
         name: (value) => {
-            if (!value) {
+            if (!value)
                 return 'Le nom du produit est requis';
-            } else if (value.length < 3) {
+            else if (value.length < 3)
                 return 'Le nom doit comporter au moins 3 caractères';
-            } else {
-                return null;
-            }
+            return null;
+
         },
         description: (value) => {
             if (!value) {
@@ -58,19 +56,18 @@ export default function EditCarrier() {
         }
     }
 
-    return (
-        <AdminLayout>
-            <Title title="Modification d'un transporteur" />
-            <GenericForm
-                initialValues={{
-                    name: carrier.name,
-                    description: carrier.description,
-                    price: carrier.price
-                }}
-                validationSchema={validationSchema}
-                onSubmit={onSubmit}
-                submitLabel="Modifier"
-            />
-        </AdminLayout>
+    return (<>
+        <Title title="Modification d'un transporteur" />
+        <GenericForm
+            initialValues={{
+                name: carrier.name,
+                description: carrier.description,
+                price: carrier.price
+            }}
+            validationSchema={validationSchema}
+            onSubmit={onSubmit}
+            submitLabel="Modifier"
+        />
+    </>
     )
 }

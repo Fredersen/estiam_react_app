@@ -1,13 +1,13 @@
 import './AdminDashboard.css';
-import Title from "../../../components/title/Title";
+import Title from "components/title/Title";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {useEffect, useState} from "react";
-import Widget from "../../../components/admin/widget/Widget";
+import Widget from "components/admin/widget/Widget";
 import {EuroSymbolOutlined, SupervisedUserCircleOutlined} from "@mui/icons-material";
-import OrderChart from "../../../components/admin/orderChart/OrderChart";
-import orderApi from "../../../services/orderApi";
-import userApi from "../../../services/userApi";
-import AdminLayout from "../../../components/layout/AdminLayout";
+import OrderChart from "components/admin/orderChart/OrderChart";
+import orderApi from "services/orderApi";
+import userApi from "services/userApi";
+import AdminLayout from "components/layout/AdminLayout";
 
 export default function AdminDashboard() {
     const [orders, setOrders] = useState([]);
@@ -105,8 +105,7 @@ export default function AdminDashboard() {
         return (valueFromThisMonth - valueFromLastMonth) / valueFromLastMonth * 100;
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Tableau de bord" />
             <div className="admin-right-content-container container">
                 <div className="admin-right-content-widget-container">
@@ -118,6 +117,5 @@ export default function AdminDashboard() {
                     <OrderChart orderFromThisMonth={orderFromThisMonth} />
                 </div>
             </div>
-        </AdminLayout>
-    );
+   </>    );
 }

@@ -1,11 +1,11 @@
-import Carousel from "../../components/carousel/Carousel";
-import Title from "../../components/title/Title";
-import ProductCard from "../../components/productCard/ProductCard";
+import Carousel from "components/carousel/Carousel";
+import Title from "components/title/Title";
+import ProductCard from "components/productCard/ProductCard";
 import './Home.css';
 import {useEffect, useState} from "react";
-import featuredProductApi from "../../services/featuredProductApi";
-import productApi from "../../services/productApi";
-import Loading from "../../components/loading/Loading";
+import featuredProductApi from "services/featuredProductApi";
+import productApi from "services/productApi";
+import Loading from "components/loading/Loading";
 
 export default function Home () {
     const [featuredProductList, setFeaturedProductList] = useState([]);

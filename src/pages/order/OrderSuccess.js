@@ -1,11 +1,11 @@
-import Title from "../../components/title/Title";
+import Title from "components/title/Title";
 import { useParams, useNavigate  } from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
-import orderApi from "../../services/orderApi";
+import orderApi from "services/orderApi";
 import './OrderSuccess.css'
-import authApi from "../../services/authApi";
-import CartContext from "../../contexts/CartContext";
-import OrderDetail from "../../components/orderDetail/OrderDetail";
+import authApi from "services/authApi";
+import CartContext from "contexts/CartContext";
+import OrderDetail from "components/orderDetail/OrderDetail";
 
 export default function OrderSuccess() {
     const { id } = useParams();

@@ -1,14 +1,14 @@
 import './ProductDashboard.css';
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import productApi from "../../../../services/productApi";
+import productApi from "services/productApi";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import TableComponent from "../../../../components/admin/table/TableComponent";
-import categoryApi from "../../../../services/categoryApi";
-import CreateButton from "../../../../components/admin/createButton/CreateButton";
+import TableComponent from "components/admin/table/TableComponent";
+import categoryApi from "services/categoryApi";
+import CreateButton from "components/admin/createButton/CreateButton";
 
 export default function ProductDashboard() {
     const [products, setProducts] = useState([]);
@@ -73,14 +73,13 @@ export default function ProductDashboard() {
         color: 'primary',
         action: handleEdit
     }
-
-    return (
-        <AdminLayout>
-            <Title title="Produits" />
+    
+    return (<>
+           <Title title="Produits" />
             <div className="button-container">
                 <CreateButton label="Créer un produit" link="/admin/produits/ajout" />
             </div>
             <TableComponent items={preparedProducts} columns={['name', 'description', 'price', 'image', 'category']} actions={[editAction, deleteAction]} />
-        </AdminLayout>
+       </>
     )
 }

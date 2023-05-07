@@ -1,9 +1,9 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import categoryApi from "../../../../services/categoryApi";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
-import Title from "../../../../components/title/Title";
-import AdminLayout from "../../../../components/layout/AdminLayout";
+import categoryApi from "services/categoryApi";
+import GenericForm from "components/admin/genericForm/GenericForm";
+import Title from "components/title/Title";
+import AdminLayout from "components/layout/AdminLayout";
 
 export default function EditCategory() {
     const navigate = useNavigate();
@@ -39,8 +39,7 @@ export default function EditCategory() {
         }
     }
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Modification d'une catégorie" />
             <GenericForm
                 initialValues={{name: category.name}}
@@ -48,6 +47,6 @@ export default function EditCategory() {
                 onSubmit={onSubmit}
                 submitLabel="Modifier"
             />
-        </AdminLayout>
+   </>
     )
 }

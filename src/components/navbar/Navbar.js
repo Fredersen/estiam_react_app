@@ -6,11 +6,11 @@ import Category from "../category/Category";
 import {Link} from "react-router-dom";
 import {CgProfile} from "react-icons/cg";
 import {useContext, useEffect, useState} from "react";
-import CartContext from "../../contexts/CartContext";
-import Login from "../../pages/login/Login";
-import Register from "../../pages/register/Register";
-import categoryApi from "../../services/categoryApi";
-import authApi from "../../services/authApi";
+import CartContext from "contexts/CartContext";
+import Login from "pages/login/Login";
+import Register from "pages/register/Register";
+import categoryApi from "services/categoryApi";
+import authApi from "services/authApi";
 import SubMenu from "../subMenu/SubMenu";
 
 export default function Navbar({ handleSearch, showLogin, setShowLogin }) {

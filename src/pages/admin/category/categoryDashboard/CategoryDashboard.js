@@ -1,12 +1,12 @@
-import {useEffect, useState} from "react";
-import categoryApi from "../../../../services/categoryApi";
-import {useNavigate} from "react-router-dom";
+import { useEffect, useState } from "react";
+import categoryApi from "services/categoryApi";
+import { useNavigate } from "react-router-dom";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
-import CreateButton from "../../../../components/admin/createButton/CreateButton";
-import TableComponent from "../../../../components/admin/table/TableComponent";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
+import CreateButton from "components/admin/createButton/CreateButton";
+import TableComponent from "components/admin/table/TableComponent";
 
 export default function CategoryDashboard() {
     const [categories, setCategories] = useState([]);
@@ -48,13 +48,12 @@ export default function CategoryDashboard() {
         action: handleEdit
     }
 
-    return (
-        <AdminLayout>
-            <Title title="Catégories" />
-            <div className="button-container">
-                <CreateButton label="Créer une catégorie" link="/admin/categories/ajout" />
-            </div>
-            <TableComponent items={categories} columns={['_id', 'name']} actions={[editAction, deleteAction]} />
-        </AdminLayout>
+    return (<>
+        <Title title="Catégories" />
+        <div className="button-container">
+            <CreateButton label="Créer une catégorie" link="/admin/categories/ajout" />
+        </div>
+        <TableComponent items={categories} columns={['_id', 'name']} actions={[editAction, deleteAction]} />
+    </>
     )
 }

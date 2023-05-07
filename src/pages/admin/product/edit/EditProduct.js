@@ -1,8 +1,8 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
-import GenericForm from "../../../../components/admin/genericForm/GenericForm";
-import productApi from "../../../../services/productApi";
-import categoryApi from "../../../../services/categoryApi";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
+import GenericForm from "components/admin/genericForm/GenericForm";
+import productApi from "services/productApi";
+import categoryApi from "services/categoryApi";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -85,8 +85,7 @@ export default function EditProduct() {
         }
     };
 
-    return (
-        <AdminLayout>
+ return(<>
             <Title title="Modifier un produit" />
             <GenericForm
                 initialValues={{
@@ -101,6 +100,5 @@ export default function EditProduct() {
                 fetchOptions={categories}
                 submitLabel="Modifier"
             />
-        </AdminLayout>
-    );
+   </>    );
 }

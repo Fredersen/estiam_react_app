@@ -1,14 +1,14 @@
 import './Delivery.css';
-import Title from "../../components/title/Title";
+import Title from "components/title/Title";
 import {MdDone} from 'react-icons/md';
 import {useContext, useEffect, useState} from "react";
-import carrierApi from "../../services/carrierApi";
-import addressApi from "../../services/addressApi";
-import authApi from "../../services/authApi";
-import orderApi from "../../services/orderApi";
-import cartContext from "../../contexts/CartContext";
-import orderDetailApi from "../../services/orderDetailApi";
-import paymentApi from "../../services/paymentApi";
+import carrierApi from "services/carrierApi";
+import addressApi from "services/addressApi";
+import authApi from "services/authApi";
+import orderApi from "services/orderApi";
+import cartContext from "contexts/CartContext";
+import orderDetailApi from "services/orderDetailApi";
+import paymentApi from "services/paymentApi";
 
 export default function Delivery () {
     const [carriers, setCarriers] = useState([]);
@@ -182,8 +182,8 @@ export default function Delivery () {
             <Title title="Choisir mon mode de livraison" />
             <div className="delivery-content">
                 {carriers.map((delivery) => (
-                    <div className="delivery-card" key={delivery._id}>
-                        <input type="radio" name="delivery" id={delivery._id} value={delivery.id} checked={selectedDelivery === delivery._id} onChange={e => setSelectedDelivery(delivery._id)} />
+                    <div className="delivery-card" key={delivery._id} onClick={e => setSelectedDelivery(delivery._id)}>
+                        <input type="radio" name="delivery" id={delivery._id} value={delivery.id} checked={selectedDelivery === delivery._id} />
                         <label htmlFor={delivery._id}>
                             <div className="delivery-card-title">{delivery.name}</div>
                             <div className="delivery-card-description">{delivery.description}</div>
