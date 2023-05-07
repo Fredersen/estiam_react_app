@@ -1,10 +1,10 @@
-import AdminLayout from "../../../../components/layout/AdminLayout";
-import Title from "../../../../components/title/Title";
+import AdminLayout from "components/layout/AdminLayout";
+import Title from "components/title/Title";
 import {useParams} from "react-router-dom";
-import featuredProductApi from "../../../../services/featuredProductApi";
+import featuredProductApi from "services/featuredProductApi";
 import {useEffect, useState} from "react";
-import productApi from "../../../../services/productApi";
-import TableComponent from "../../../../components/admin/table/TableComponent";
+import productApi from "services/productApi";
+import TableComponent from "components/admin/table/TableComponent";
 import AddIcon from '@mui/icons-material/Add';
 
 export default function AddFeatureProduct() {
