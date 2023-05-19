@@ -20,7 +20,7 @@ export default function ProductItem() {
                 setProduct(fetchedProduct);
                 setIsLoading(false);
             } catch (error) {
-                console.log(error.response);
+                console.error(error.response);
             }
         }
         fetchProduct();

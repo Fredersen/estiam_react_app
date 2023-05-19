@@ -16,7 +16,7 @@ export default function SubMenu({ setShowSubMenu }) {
                 orders.length > 0 && setShowOrder(true);
             }
             catch (e) {
-                console.log(e);
+                console.error(e);
             }
         };
 

@@ -1,9 +1,9 @@
 import carouselApi from "services/carouselApi";
-import AdminLayout from "components/layout/AdminLayout";
 import GenericForm from "components/admin/genericForm/GenericForm";
 import {useEffect, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import Title from "components/title/Title";
+import imageApi from "services/imageApi";
 
 export default function EditCarousel() {
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ export default function EditCarousel() {
 
     const fetchCarousel = async () => {
         try {
-            const data = await carouselApi.findOne(id);
+            const data = await carouselApi.find(id);
             setCarousel(data);
         } catch (error) {
             console.error(error);
@@ -39,14 +39,28 @@ export default function EditCarousel() {
 
     const onSubmit = async (values) => {
         try {
+            if (values.image instanceof File) {
+                const formData = new FormData();
+                formData.append('image', values.image);
+
+                const imageResponse = await imageApi.upload(formData);
+
+                if (!imageResponse.success) {
+                    throw new Error('Image upload failed');
+                }
+
+                values.image = imageResponse.url;
+            }
+
             await carouselApi.update(id, values);
             navigate('/admin/carousel');
         } catch (error) {
             console.error(error);
         }
-    }
+    };
 
- return(<>
+
+    return(<>
             <Title title="Modifier une image du carousel" />
             <GenericForm
                 initialValues={initialValues}

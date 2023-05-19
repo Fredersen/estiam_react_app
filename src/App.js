@@ -24,7 +24,7 @@ function App() {
                 setProducts(products);
             }
             catch (e) {
-                console.log(e);
+                console.error(e);
             }
         }
         fetchData()
@@ -32,7 +32,6 @@ function App() {
 
 
     function handleSearch(search) {
-        console.log(search);
         if (search !== '') {
             const filteredProducts = products.filter(product => {
                 return product.name.toLowerCase().includes(search.toLowerCase()) || product.description.toLowerCase().includes(search.toLowerCase());

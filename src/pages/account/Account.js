@@ -16,7 +16,7 @@ export default function Account() {
                 setUser(loggedUser);
                 setFormData(loggedUser);
             } catch (e) {
-                console.log(e);
+                console.error(e);
             }
         };
         fetchUser();
@@ -34,7 +34,7 @@ export default function Account() {
             setUser(formData);
             setEditMode(false);
         } catch (e) {
-            console.log(e);
+            console.error(e);
         }
     };
 

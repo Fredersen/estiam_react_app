@@ -26,7 +26,7 @@ export default function Navbar({ handleSearch, showLogin, setShowLogin }) {
                 setCategories(categories);
             }
             catch (e) {
-                console.log(e);
+                console.error(e);
             }
         };
 

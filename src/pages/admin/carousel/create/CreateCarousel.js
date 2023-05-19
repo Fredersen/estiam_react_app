@@ -1,12 +1,11 @@
-import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import carouselApi from "services/carouselApi";
-import AdminLayout from "components/layout/AdminLayout";
 import Title from "components/title/Title";
 import GenericForm from "components/admin/genericForm/GenericForm";
+import imageApi from "services/imageApi";
+
 
 export default function CreateCarousel() {
-    const [carousel, setCarousel] = useState([]);
     const navigate = useNavigate();
 
     const initialValues = {
@@ -26,8 +25,19 @@ export default function CreateCarousel() {
     const onSubmit = async (values) => {
         try {
             const formData = new FormData();
-            formData.append("image", values.image);
-            await carouselApi.create(formData);
+            formData.append('image', values.image);
+
+            const imageResponse = await imageApi.upload(formData);
+
+            if (!imageResponse.success) {
+                throw new Error('Image upload failed');
+            }
+
+            const carouselData = {
+                image: imageResponse.url,
+            };
+
+            await carouselApi.create(carouselData);
             navigate('/admin/carousel');
         } catch (error) {
             console.error(error);

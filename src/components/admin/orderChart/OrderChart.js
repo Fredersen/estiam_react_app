@@ -31,9 +31,6 @@ export default function OrderChart({ orderFromThisMonth }) {
                 }).length,
             });
         }
-
-        console.log(data);
-
         setChartData(data);
     };
 

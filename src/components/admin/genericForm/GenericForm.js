@@ -34,12 +34,9 @@ export default function GenericForm({
 
     const handleImageChange = (event) => {
         const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            setValues({ ...values, image: reader.result });
-        };
+        setValues({ ...values, image: file });
     };
+
 
     const handleSubmit = (event) => {
         event.preventDefault();

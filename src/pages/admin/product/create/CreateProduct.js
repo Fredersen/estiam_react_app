@@ -3,6 +3,7 @@ import Title from "components/title/Title";
 import GenericForm from "components/admin/genericForm/GenericForm";
 import productApi from "services/productApi";
 import categoryApi from "services/categoryApi";
+import imageApi from "services/imageApi";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -79,19 +80,32 @@ export default function CreateProduct() {
     const onSubmit = async (values) => {
         try {
             const formData = new FormData();
-            formData.append("name", values.name);
-            formData.append("description", values.description);
-            formData.append("price", values.price);
-            formData.append("category", values.category);
-            formData.append("image", values.image);
-            await productApi.create(formData);
-            return navigate("/admin/produits");
+
+            formData.append('image', values.image);
+
+            const imageResponse = await imageApi.upload(formData);
+
+            if (!imageResponse.success) {
+                throw new Error('Image upload failed');
+            }
+
+            const product = {
+                name: values.name,
+                description: values.description,
+                price: values.price,
+                category: values.category,
+                image: imageResponse.url,
+            };
+
+            await productApi.create(product);
+            navigate("/admin/produits");
         } catch (error) {
             console.error(error);
         }
     };
 
- return(<>
+    return(
+        <>
             <Title title="Création de produit" />
             <GenericForm
                 initialValues={initialValues}
@@ -100,5 +114,6 @@ export default function CreateProduct() {
                 fetchOptions={categories}
                 submitLabel="Créer"
             />
-   </>    );
+        </>
+    );
 }

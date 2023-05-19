@@ -27,7 +27,6 @@ function create(product) {
 }
 
 function update(id, product) {
-    console.log(product);
     return axios
         .put(apiBaseUrl + "/api/products/" + id, product)
         .then(response => response.data.data);
