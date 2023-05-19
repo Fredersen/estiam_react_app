@@ -15,7 +15,6 @@ function find(id) {
 }
 
 function create(carrier) {
-    console.log(carrier)
     return axios
         .post(apiBaseUrl + "/api/carriers/", carrier)
         .then(response => response.data.data);

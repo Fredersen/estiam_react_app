@@ -33,7 +33,6 @@ export default function OrderSuccess() {
         if (!order || order.stripeSessionId !== id || order.user !== authApi.retrieveUserId()) {
         } else {
             const updatedOrder = await orderApi.update(order._id, { state: 'paid' });
-            console.log("updatedOrder:", updatedOrder);
             return updatedOrder;
         }
     }

@@ -1,8 +1,8 @@
-import AdminLayout from "components/layout/AdminLayout";
 import Title from "components/title/Title";
 import GenericForm from "components/admin/genericForm/GenericForm";
 import productApi from "services/productApi";
 import categoryApi from "services/categoryApi";
+import imageApi from "services/imageApi";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -78,6 +78,18 @@ export default function EditProduct() {
 
     const onSubmit = async (values) => {
         try {
+            if (values.image instanceof File) {
+                const formData = new FormData();
+                formData.append('image', values.image);
+
+                const imageResponse = await imageApi.upload(formData);
+
+                if (!imageResponse.success) {
+                    throw new Error('Image upload failed');
+                }
+
+                values.image = imageResponse.url;
+            }
             await productApi.update(id, values);
             navigate('/admin/produits');
         } catch (error) {

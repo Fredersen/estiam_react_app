@@ -30,7 +30,7 @@ export default function Home () {
                 setProductsByCategory(productsByFeature);
                 setIsLoading(false);
             } catch (error) {
-                console.log(error.response);
+                console.error(error.response);
             }
         }
         fetchFeaturedProducts();

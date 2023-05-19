@@ -22,7 +22,7 @@ export default function MyOrder() {
                 });
                 setOrders(fetchedOrders);
             } catch (error) {
-                console.log(error.response);
+                console.error(error.response);
             }
         };
         fetchOrders();

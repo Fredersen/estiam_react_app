@@ -25,7 +25,7 @@ export default function Product({ filteredProduct }) {
                 }
             }
             catch (e) {
-                console.log(e);
+                console.error(e);
             }
         };
         fetchData();
@@ -37,10 +37,9 @@ export default function Product({ filteredProduct }) {
             if (slug !== 'produits') {
                 try {
                     const data = await productApi.findByCategory(slug);
-                    console.log(data);
                     setProducts(data);
                 } catch (error) {
-                    console.log(error.response);
+                    console.error(error.response);
                 }
             } else {
                 setProducts(filteredProduct);

@@ -15,7 +15,7 @@ function Carousel() {
                 const fetchedCarouselImages = await carouselApi.findAll();
                 setCarouselImages(fetchedCarouselImages);
             } catch (error) {
-                console.log(error.response);
+                console.error(error.response);
             }
         }
         fetchCarouselImages();

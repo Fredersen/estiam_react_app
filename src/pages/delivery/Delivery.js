@@ -32,7 +32,7 @@ export default function Delivery () {
                 const fetchedCarriers = await carrierApi.findAll();
                 setCarriers(fetchedCarriers);
             } catch (error) {
-                console.log(error.response);
+                console.error(error.response);
             }
         }
 
@@ -48,7 +48,7 @@ export default function Delivery () {
                 productsForCheckout.push(paymentApi.carrierForCheckout(carriers.find(carrier => carrier._id === selectedDelivery)))
                 await paymentApi.createCheckoutSession(productsForCheckout, orderId);
             } catch (error) {
-                console.log(error.response);
+                console.error(error.response);
             }
         } else {
             setErrors(validationErrors);
@@ -60,7 +60,7 @@ export default function Delivery () {
         try {
             return await orderApi.create(order);
         } catch (error) {
-            console.log(error.response);
+            console.error(error.response);
         }
     }
 
@@ -79,7 +79,7 @@ export default function Delivery () {
             try {
                 await orderDetailApi.create(orderDetail);
             } catch (error) {
-                console.log(error.response);
+                console.error(error.response);
             }
         })
     }
@@ -88,7 +88,7 @@ export default function Delivery () {
         try {
             return await addressApi.create(address);
         } catch (error) {
-            console.log(error.response);
+            console.error(error.response);
         }
     }
 
